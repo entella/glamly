@@ -1,0 +1,123 @@
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\ApplicationInsights.config
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\csc.exe
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\vbc.exe
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\VBCSCompiler.exe
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\GlamlyData.dll.config
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\GlamlyData.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\GlamlyData.pdb
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\EntityFramework.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\EntityFramework.SqlServer.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.Web.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.ApplicationInsights.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\MySql.Web.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\EntityFramework.xml
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\EntityFramework.SqlServer.xml
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.Web.xml
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.ApplicationInsights.xml
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\MySql.Data.xml
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\bin\MySql.Data.Entity.EF6.xml
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\obj\Debug\GlamlyData.csprojResolveAssemblyReference.cache
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\obj\Debug\GlamlyData.dll
+C:\Users\KrnGeet\Desktop\Glamly API\Glamly API\Glamly\GlamlyData\obj\Debug\GlamlyData.pdb
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\ApplicationInsights.config
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\csc.exe
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\vbc.exe
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\VBCSCompiler.exe
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\GlamlyData.dll.config
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\GlamlyData.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\GlamlyData.pdb
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\EntityFramework.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\EntityFramework.SqlServer.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.Web.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.ApplicationInsights.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\MySql.Data.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\MySql.Data.Entity.EF6.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\MySql.Web.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\EntityFramework.xml
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\EntityFramework.SqlServer.xml
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.Web.xml
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.ApplicationInsights.xml
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\MySql.Data.xml
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\bin\MySql.Data.Entity.EF6.xml
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\obj\Debug\GlamlyData.dll
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\obj\Debug\GlamlyData.pdb
+C:\Users\kashmir.singh\Desktop\update glamly\Glamly API\Glamly API\Glamly\GlamlyData\obj\Debug\GlamlyData.csprojResolveAssemblyReference.cache
+D:\Glamly API\Glamly\GlamlyData\bin\ApplicationInsights.config
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\csc.exe
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\System.Collections.Immutable.dll
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\System.Reflection.Metadata.dll
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\vbc.exe
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\VBCSCompiler.exe
+D:\Glamly API\Glamly\GlamlyData\bin\roslyn\VBCSCompiler.exe.config
+D:\Glamly API\Glamly\GlamlyData\bin\GlamlyData.dll.config
+D:\Glamly API\Glamly\GlamlyData\bin\GlamlyData.dll
+D:\Glamly API\Glamly\GlamlyData\bin\GlamlyData.pdb
+D:\Glamly API\Glamly\GlamlyData\bin\EntityFramework.dll
+D:\Glamly API\Glamly\GlamlyData\bin\EntityFramework.SqlServer.dll
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.DependencyCollector.dll
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.Web.dll
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.WindowsServer.dll
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.ApplicationInsights.dll
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Glamly API\Glamly\GlamlyData\bin\MySql.Data.dll
+D:\Glamly API\Glamly\GlamlyData\bin\MySql.Data.Entity.EF6.dll
+D:\Glamly API\Glamly\GlamlyData\bin\MySql.Web.dll
+D:\Glamly API\Glamly\GlamlyData\bin\EntityFramework.xml
+D:\Glamly API\Glamly\GlamlyData\bin\EntityFramework.SqlServer.xml
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.DependencyCollector.xml
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.Web.xml
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.AI.WindowsServer.xml
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.ApplicationInsights.xml
+D:\Glamly API\Glamly\GlamlyData\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Glamly API\Glamly\GlamlyData\bin\MySql.Data.xml
+D:\Glamly API\Glamly\GlamlyData\bin\MySql.Data.Entity.EF6.xml
+D:\Glamly API\Glamly\GlamlyData\obj\Debug\GlamlyData.dll
+D:\Glamly API\Glamly\GlamlyData\obj\Debug\GlamlyData.pdb

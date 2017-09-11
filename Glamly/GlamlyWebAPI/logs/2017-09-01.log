@@ -1,0 +1,7 @@
+12:48:47.73: Get all users list
+16:03:25.77: exception Invalid JSON primitive: a.
+16:03:25.80: exception System.Web.Extensions
+16:04:41.50: exception Invalid JSON primitive: a.
+16:04:41.50: exception System.Web.Extensions
+18:26:34.81: exception Unable to cast object of type 'System.Collections.ArrayList' to type 'System.Array'.
+18:26:34.84: exception GlamlyWebAPI

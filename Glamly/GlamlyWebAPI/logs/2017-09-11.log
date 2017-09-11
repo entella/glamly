@@ -1,0 +1,18 @@
+11:11:32.21: exception Collection was modified; enumeration operation may not execute.
+11:11:32.30: exception mscorlib
+11:16:20.43: exception Collection was modified; enumeration operation may not execute.
+11:16:20.94: exception mscorlib
+11:20:47.53: exception Collection was modified; enumeration operation may not execute.
+11:20:47.55: exception mscorlib
+13:01:37.00: exception Object reference not set to an instance of an object.
+13:01:37.06: exception GlamlyWebAPI
+13:02:36.08: exception Object reference not set to an instance of an object.
+13:02:36.08: exception GlamlyWebAPI
+13:06:37.98: exception Object reference not set to an instance of an object.
+13:06:38.02: exception GlamlyWebAPI
+14:31:50.27: exception An error occurred while executing the command definition. See the inner exception for details.
+14:31:50.67: exception EntityFramework
+14:32:38.04: exception An error occurred while executing the command definition. See the inner exception for details.
+14:32:38.06: exception EntityFramework
+14:33:00.92: exception An error occurred while executing the command definition. See the inner exception for details.
+14:33:00.92: exception EntityFramework

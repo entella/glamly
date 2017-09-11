@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlamlyWebAPI", "GlamlyWebAPI\GlamlyWebAPI.csproj", "{938C17A1-C1E1-4B67-8792-4C2380B32FF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlamlyServices", "GlamlyServices\GlamlyServices.csproj", "{3C9F5A9B-673F-490F-804D-7387173C3FAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlamlyData", "GlamlyData\GlamlyData.csproj", "{9CD653E2-371B-406A-A56B-21BA2564A306}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{938C17A1-C1E1-4B67-8792-4C2380B32FF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{938C17A1-C1E1-4B67-8792-4C2380B32FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{938C17A1-C1E1-4B67-8792-4C2380B32FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{938C17A1-C1E1-4B67-8792-4C2380B32FF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C9F5A9B-673F-490F-804D-7387173C3FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C9F5A9B-673F-490F-804D-7387173C3FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C9F5A9B-673F-490F-804D-7387173C3FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C9F5A9B-673F-490F-804D-7387173C3FAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CD653E2-371B-406A-A56B-21BA2564A306}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CD653E2-371B-406A-A56B-21BA2564A306}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CD653E2-371B-406A-A56B-21BA2564A306}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CD653E2-371B-406A-A56B-21BA2564A306}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

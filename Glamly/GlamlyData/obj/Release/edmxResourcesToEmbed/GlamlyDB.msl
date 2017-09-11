@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GlamlyModelStoreContainer" CdmEntityContainer="GlamlyEntities">
+    <EntitySetMapping Name="wp_commentmeta">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_commentmeta">
+        <MappingFragment StoreEntitySet="wp_commentmeta">
+          <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+          <ScalarProperty Name="comment_id" ColumnName="comment_id" />
+          <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+          <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_comments">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_comments">
+        <MappingFragment StoreEntitySet="wp_comments">
+          <ScalarProperty Name="comment_ID" ColumnName="comment_ID" />
+          <ScalarProperty Name="comment_post_ID" ColumnName="comment_post_ID" />
+          <ScalarProperty Name="comment_author" ColumnName="comment_author" />
+          <ScalarProperty Name="comment_author_email" ColumnName="comment_author_email" />
+          <ScalarProperty Name="comment_author_url" ColumnName="comment_author_url" />
+          <ScalarProperty Name="comment_author_IP" ColumnName="comment_author_IP" />
+          <ScalarProperty Name="comment_date" ColumnName="comment_date" />
+          <ScalarProperty Name="comment_date_gmt" ColumnName="comment_date_gmt" />
+          <ScalarProperty Name="comment_content" ColumnName="comment_content" />
+          <ScalarProperty Name="comment_karma" ColumnName="comment_karma" />
+          <ScalarProperty Name="comment_approved" ColumnName="comment_approved" />
+          <ScalarProperty Name="comment_agent" ColumnName="comment_agent" />
+          <ScalarProperty Name="comment_type" ColumnName="comment_type" />
+          <ScalarProperty Name="comment_parent" ColumnName="comment_parent" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_duplicator_packages">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_duplicator_packages">
+        <MappingFragment StoreEntitySet="wp_duplicator_packages">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="hash" ColumnName="hash" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="owner" ColumnName="owner" />
+          <ScalarProperty Name="package" ColumnName="package" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_glamly_services">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_services">
+        <MappingFragment StoreEntitySet="wp_glamly_services">
+          <ScalarProperty Name="service_image" ColumnName="service_image" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="servicename" ColumnName="servicename" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_glamly_servicesbookings">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicesbookings">
+        <MappingFragment StoreEntitySet="wp_glamly_servicesbookings">
+          <ScalarProperty Name="isedit" ColumnName="isedit" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="bookingid" ColumnName="bookingid" />
+          <ScalarProperty Name="service" ColumnName="service" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="altdatetime" ColumnName="altdatetime" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="personal" ColumnName="personal" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="billingaddress" ColumnName="billingaddress" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="newsletter" ColumnName="newsletter" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_glamly_servicestypes">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicestypes">
+        <MappingFragment StoreEntitySet="wp_glamly_servicestypes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="typename" ColumnName="typename" />
+          <ScalarProperty Name="serviceid" ColumnName="serviceid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_links">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_links">
+        <MappingFragment StoreEntitySet="wp_links">
+          <ScalarProperty Name="link_id" ColumnName="link_id" />
+          <ScalarProperty Name="link_url" ColumnName="link_url" />
+          <ScalarProperty Name="link_name" ColumnName="link_name" />
+          <ScalarProperty Name="link_image" ColumnName="link_image" />
+          <ScalarProperty Name="link_target" ColumnName="link_target" />
+          <ScalarProperty Name="link_description" ColumnName="link_description" />
+          <ScalarProperty Name="link_visible" ColumnName="link_visible" />
+          <ScalarProperty Name="link_owner" ColumnName="link_owner" />
+          <ScalarProperty Name="link_rating" ColumnName="link_rating" />
+          <ScalarProperty Name="link_updated" ColumnName="link_updated" />
+          <ScalarProperty Name="link_rel" ColumnName="link_rel" />
+          <ScalarProperty Name="link_notes" ColumnName="link_notes" />
+          <ScalarProperty Name="link_rss" ColumnName="link_rss" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_mondula_form_wizards">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_mondula_form_wizards">
+        <MappingFragment StoreEntitySet="wp_mondula_form_wizards">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="json" ColumnName="json" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_options">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_options">
+        <MappingFragment StoreEntitySet="wp_options">
+          <ScalarProperty Name="option_id" ColumnName="option_id" />
+          <ScalarProperty Name="option_name" ColumnName="option_name" />
+          <ScalarProperty Name="option_value" ColumnName="option_value" />
+          <ScalarProperty Name="autoload" ColumnName="autoload" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_postmeta">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_postmeta">
+        <MappingFragment StoreEntitySet="wp_postmeta">
+          <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+          <ScalarProperty Name="post_id" ColumnName="post_id" />
+          <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+          <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_posts">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_posts">
+        <MappingFragment StoreEntitySet="wp_posts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="post_author" ColumnName="post_author" />
+          <ScalarProperty Name="post_date" ColumnName="post_date" />
+          <ScalarProperty Name="post_date_gmt" ColumnName="post_date_gmt" />
+          <ScalarProperty Name="post_content" ColumnName="post_content" />
+          <ScalarProperty Name="post_title" ColumnName="post_title" />
+          <ScalarProperty Name="post_excerpt" ColumnName="post_excerpt" />
+          <ScalarProperty Name="post_status" ColumnName="post_status" />
+          <ScalarProperty Name="comment_status" ColumnName="comment_status" />
+          <ScalarProperty Name="ping_status" ColumnName="ping_status" />
+          <ScalarProperty Name="post_password" ColumnName="post_password" />
+          <ScalarProperty Name="post_name" ColumnName="post_name" />
+          <ScalarProperty Name="to_ping" ColumnName="to_ping" />
+          <ScalarProperty Name="pinged" ColumnName="pinged" />
+          <ScalarProperty Name="post_modified" ColumnName="post_modified" />
+          <ScalarProperty Name="post_modified_gmt" ColumnName="post_modified_gmt" />
+          <ScalarProperty Name="post_content_filtered" ColumnName="post_content_filtered" />
+          <ScalarProperty Name="post_parent" ColumnName="post_parent" />
+          <ScalarProperty Name="guid" ColumnName="guid" />
+          <ScalarProperty Name="menu_order" ColumnName="menu_order" />
+          <ScalarProperty Name="post_type" ColumnName="post_type" />
+          <ScalarProperty Name="post_mime_type" ColumnName="post_mime_type" />
+          <ScalarProperty Name="comment_count" ColumnName="comment_count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_term_relationships">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_term_relationships">
+        <MappingFragment StoreEntitySet="wp_term_relationships">
+          <ScalarProperty Name="object_id" ColumnName="object_id" />
+          <ScalarProperty Name="term_taxonomy_id" ColumnName="term_taxonomy_id" />
+          <ScalarProperty Name="term_order" ColumnName="term_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_term_taxonomy">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_term_taxonomy">
+        <MappingFragment StoreEntitySet="wp_term_taxonomy">
+          <ScalarProperty Name="term_taxonomy_id" ColumnName="term_taxonomy_id" />
+          <ScalarProperty Name="term_id" ColumnName="term_id" />
+          <ScalarProperty Name="taxonomy" ColumnName="taxonomy" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="parent" ColumnName="parent" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_termmeta">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_termmeta">
+        <MappingFragment StoreEntitySet="wp_termmeta">
+          <ScalarProperty Name="meta_id" ColumnName="meta_id" />
+          <ScalarProperty Name="term_id" ColumnName="term_id" />
+          <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+          <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_terms">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_terms">
+        <MappingFragment StoreEntitySet="wp_terms">
+          <ScalarProperty Name="term_id" ColumnName="term_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="slug" ColumnName="slug" />
+          <ScalarProperty Name="term_group" ColumnName="term_group" />
+          <ScalarProperty Name="term_order" ColumnName="term_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_usermeta">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_usermeta">
+        <MappingFragment StoreEntitySet="wp_usermeta">
+          <ScalarProperty Name="umeta_id" ColumnName="umeta_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="meta_key" ColumnName="meta_key" />
+          <ScalarProperty Name="meta_value" ColumnName="meta_value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_users">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_users">
+        <MappingFragment StoreEntitySet="wp_users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="user_login" ColumnName="user_login" />
+          <ScalarProperty Name="user_pass" ColumnName="user_pass" />
+          <ScalarProperty Name="user_nicename" ColumnName="user_nicename" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_url" ColumnName="user_url" />
+          <ScalarProperty Name="user_registered" ColumnName="user_registered" />
+          <ScalarProperty Name="user_activation_key" ColumnName="user_activation_key" />
+          <ScalarProperty Name="user_status" ColumnName="user_status" />
+          <ScalarProperty Name="display_name" ColumnName="display_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_cf7_data">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_cf7_data">
+        <MappingFragment StoreEntitySet="wp_cf7_data">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created" ColumnName="created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_cf7_data_entry">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_cf7_data_entry">
+        <MappingFragment StoreEntitySet="wp_cf7_data_entry">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cf7_id" ColumnName="cf7_id" />
+          <ScalarProperty Name="data_id" ColumnName="data_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

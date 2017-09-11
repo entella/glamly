@@ -1,0 +1,11 @@
+10:55:39.08: exception Specified cast is not valid.
+10:55:39.16: exception GlamlyWebAPI
+12:46:16.27: exception The underlying provider failed on Open.
+12:46:16.33: exception EntityFramework
+18:00:21.72: exception Object reference not set to an instance of an object.
+18:00:21.74: exception GlamlyWebAPI
+18:05:00.26: exception Object reference not set to an instance of an object.
+18:05:00.31: exception GlamlyWebAPI
+18:47:46.39: exception Object reference not set to an instance of an object.
+18:47:46.39: exception GlamlyWebAPI
+19:08:11.72: Get all users list
