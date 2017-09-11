@@ -97,6 +97,8 @@ namespace GlamlyWebAPI.Controllers
                         UserData objuser = new UserData();
                         decimal metaid = item.umeta_id;
                         string metavalue = item.meta_key;
+						
+					
 
                         if (metavalue == "wp_capabilities")
                         {
