@@ -1,0 +1,32 @@
+10:38:03.63: Get all users list
+10:38:50.79: Get all users list
+10:53:46.59: Get users by id
+11:00:43.65: Get users by id
+11:07:12.71: Get users by id
+11:10:19.73: Get users by id
+12:16:52.07: Get users by id
+12:20:00.60: Get users by id
+12:27:56.32: exception Object reference not set to an instance of an object.
+12:27:56.34: exception GlamlyWebAPI
+12:29:04.99: Get users by id
+12:39:28.68: Get users by id
+12:40:34.32: Get users by id
+12:47:24.15: Get users by id
+12:50:56.63: Get users by id
+13:20:07.21: Get users by id
+13:22:33.51: exception Object reference not set to an instance of an object.
+13:22:33.53: exception GlamlyWebAPI
+13:42:25.84: Get users by id
+13:42:42.56: exception Object reference not set to an instance of an object.
+13:42:42.60: exception GlamlyWebAPI
+13:44:27.70: Get users by id
+13:44:54.28: exception Object reference not set to an instance of an object.
+13:44:54.30: exception GlamlyWebAPI
+13:51:13.78: Get users by id
+13:51:42.27: exception Object reference not set to an instance of an object.
+13:51:42.30: exception GlamlyWebAPI
+13:53:05.22: Get users by id
+15:56:45.63: Get users by id
+15:56:54.86: Get users by id
+15:58:06.92: Get users by id
+16:45:18.73: Get all users list

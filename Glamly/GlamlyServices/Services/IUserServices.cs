@@ -52,6 +52,10 @@ namespace GlamlyServices.Services
 
         List<wp_usermeta> GetUserMetadatabyId(decimal userid);
 
-        bool IsFacebookLogin(int userid);
+        bool IsFacebookLogin(int userid,string facebookid);
+
+        int savebookingdata(wp_glamly_servicesbookings bookings);
+
+        int savepaymentdata(wp_glamly_payment payment);
     }
 }

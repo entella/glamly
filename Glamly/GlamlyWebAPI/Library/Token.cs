@@ -32,5 +32,6 @@ namespace GlamlyWebAPI.Library
         /// </summary>
         [JsonProperty("error")]
         public string Error { get; set; }
+        public int Id { get; set; }
     }
 }

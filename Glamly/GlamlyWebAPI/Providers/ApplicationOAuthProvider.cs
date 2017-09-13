@@ -41,7 +41,7 @@ namespace GlamlyWebAPI.Providers
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
-        public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
+        public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var user = new wp_users();
 
@@ -49,16 +49,10 @@ namespace GlamlyWebAPI.Providers
             var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
             if (allowedOrigin == null) allowedOrigin = "*";
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
-
-           // IFormCollection parameters =  context.Request.ReadFormAsync();
             var form =  context.Request.ReadFormAsync();
             string usertypeid = form.Result.Get("usertype");
-          //  var deviceId = form.Equals("usertype");
-
-            //if (string.Equals(form["usertype"], "true", StringComparison.OrdinalIgnoreCase))
-            //{
-            //    // Add custom logic to handle the "remember me" case.
-            //}
+            string facebookid = form.Result.Get("facebookid");
+          
             // Validate your user and base on validation return claim identity or invalid_grant error
             //string email = context.UserName;
             //string password = context.Password;         
@@ -70,45 +64,42 @@ namespace GlamlyWebAPI.Providers
                 if (userdetail != null)
                 {
                     userid = Convert.ToInt32(userdetail.ID);
-
-                    
-                    if (!string.IsNullOrEmpty(context.Password))
+                    //Get Usertype 
+                    var usermetadata = _userService.GetUserMetadatakeybyId(userid);
+                    if (usermetadata != null)
+                    {
+                        var desearlize = serialize.Deserialize(usermetadata.meta_value);
+                        UserData usercollection = javaserializer.Deserialize<UserData>(Convert.ToString(desearlize));
+                        if (usercollection != null)
+                        {
+                            usertype = usercollection.user_type;
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(context.Password) && usertypeid.Trim().ToLower() == usertype.Trim().ToLower())
                     {
                         hashCode = userdetail.user_activation_key;
-                        encodingPasswordString = Hashing.MD5Hash(context.Password, hashCode);
-
-                        var usermetadata = _userService.GetUserMetadatakeybyId(userid);
-                        if (usermetadata != null)
-                        {
-                            var desearlize = serialize.Deserialize(usermetadata.meta_value);
-                            UserData usercollection = javaserializer.Deserialize<UserData>(Convert.ToString(desearlize));
-                            if (usercollection != null)
-                            {
-                                usertype = usercollection.user_type;
-                            }
-                        }
-                        
-                        if(usertypeid.Equals(usertypeid))
-                        {
-                            user = _userService.validationUser(context.UserName, encodingPasswordString);
-                            isfacebook = _userService.IsFacebookLogin(Convert.ToInt32(userdetail.ID));
-                        }
-                      
+                        encodingPasswordString = Hashing.MD5Hash(context.Password, hashCode);                                                                 
+                        user = _userService.validationUser(context.UserName, encodingPasswordString);                                   
+                    }
+                    if(usertypeid.Trim().ToLower() == usertype.Trim().ToLower())
+                    {                      
+                        isfacebook = _userService.IsFacebookLogin(Convert.ToInt32(userdetail.ID), facebookid);
                     }
                 }
             }
-
-            if (isfacebook || user != null)
+            if (isfacebook || user.ID>0)
             {
                 var claimsIdentity = new ClaimsIdentity(context.Options.AuthenticationType);
                 claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
                 claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, "user"));
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.NameIdentifier, userid.ToString()));
                 context.Validated(claimsIdentity);
 
                 var props = new AuthenticationProperties(new Dictionary<string, string>
                 {
                     {
                         "Id", userid.ToString()
+                       // "username", context.UserName;
                     },
                 });
                 var ticket = new AuthenticationTicket(claimsIdentity, props);
@@ -118,7 +109,7 @@ namespace GlamlyWebAPI.Providers
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect.");
             }
-            return Task.FromResult<object>(null);
+            return;
         }
         /// <summary>
         /// 
@@ -209,13 +200,13 @@ namespace GlamlyWebAPI.Providers
         /// <param name="userName"></param>
         /// <param name="useremail"></param>
         /// <returns></returns>
-        public static AuthenticationProperties CreateProperties(string id, string userName, string useremail)
+        public static AuthenticationProperties CreateProperties(string id, string userName)
         {
             IDictionary<string, string> data = new Dictionary<string, string>
             {
                 { "Id", id },
-                { "userName", userName },
-                { "userEmail", useremail }
+                { "userName", userName }
+              
             };
             return new AuthenticationProperties(data);
         }

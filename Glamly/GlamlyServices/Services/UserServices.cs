@@ -81,8 +81,8 @@ namespace GlamlyServices.Services
                 wp_usermeta objfb = new wp_usermeta();
                 wp_users obj = new wp_users();
                 objfb = _context.wp_usermeta.FirstOrDefault(ud => ud.meta_key == "facebook_id" && ud.meta_value.Contains(fbid));
-                if (objfb!=null)
-                {                  
+                if (objfb != null)
+                {
                     obj.ID = objfb.user_id;
                 }
                 return obj;
@@ -93,16 +93,16 @@ namespace GlamlyServices.Services
             }
         }
 
-       public wp_users validationUser(string username, string password)
+        public wp_users validationUser(string username, string password)
         {
             try
             {
-                       
+
                 using (var context = new GlamlyEntities())
                 {
 
-                    return context.wp_users.FirstOrDefault(x => x.user_email == username && x.user_pass == password);                    
-                    
+                    return context.wp_users.FirstOrDefault(x => x.user_email == username && x.user_pass == password);
+
                 }
             }
             catch (Exception ex)
@@ -110,7 +110,7 @@ namespace GlamlyServices.Services
                 return null;
             }
         }
-      
+
 
 
         public int Saveuserdata(wp_users userdata)
@@ -154,7 +154,7 @@ namespace GlamlyServices.Services
 
         public wp_usermeta GetStylist(int id)
         {
-            return _context.wp_usermeta.Where(m => m.meta_key == "wp_capabilities" && m.meta_value.Contains("administrator")&& m.user_id == id).FirstOrDefault();
+            return _context.wp_usermeta.Where(m => m.meta_key == "wp_capabilities" && m.meta_value.Contains("administrator") && m.user_id == id).FirstOrDefault();
         }
 
         #endregion
@@ -164,7 +164,7 @@ namespace GlamlyServices.Services
         public List<wp_glamly_services> GetServices()
         {
             return _context.wp_glamly_services.ToList();
-        }    
+        }
 
         public wp_glamly_services GetServicesById(int id)
         {
@@ -230,7 +230,7 @@ namespace GlamlyServices.Services
             return _context.wp_glamly_services.Include("wp_glamly_servicestypes").Where(s => s.id == id).ToList();
         }
 
-        public bool IsFacebookLogin(int userid)
+        public bool IsFacebookLogin(int userid, string facebookid)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             bool isfacebook = false;
@@ -240,16 +240,46 @@ namespace GlamlyServices.Services
             {
                 UserData usercollection = serializer.Deserialize<UserData>(Convert.ToString(desearlize));
                 var fbid = usercollection.user_facebookid;
-                if (!string.IsNullOrEmpty(fbid))               
-                    isfacebook = true;                             
+                if (!string.IsNullOrEmpty(fbid) && fbid.Trim().ToLower() == facebookid.Trim().ToLower())
+                    isfacebook = true;
             }
             return isfacebook;
         }
 
-        #endregion
+        public int savebookingdata(wp_glamly_servicesbookings bookings)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    context.Entry(bookings).State = System.Data.Entity.EntityState.Added;
+                    context.SaveChanges();
+                    return bookings.id;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
 
-
-
-
+        public int savepaymentdata(wp_glamly_payment payment)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    context.Entry(payment).State = System.Data.Entity.EntityState.Added;
+                    context.SaveChanges();
+                    return payment.userid;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
     }
+
+    #endregion
 }

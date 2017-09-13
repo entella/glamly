@@ -44,5 +44,6 @@ namespace GlamlyData
         public virtual DbSet<wp_users> wp_users { get; set; }
         public virtual DbSet<wp_cf7_data> wp_cf7_data { get; set; }
         public virtual DbSet<wp_cf7_data_entry> wp_cf7_data_entry { get; set; }
+        public virtual DbSet<wp_glamly_payment> wp_glamly_payment { get; set; }
     }
 }

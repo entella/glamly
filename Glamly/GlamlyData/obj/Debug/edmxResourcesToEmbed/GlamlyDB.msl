@@ -58,6 +58,8 @@
     <EntitySetMapping Name="wp_glamly_servicesbookings">
       <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicesbookings">
         <MappingFragment StoreEntitySet="wp_glamly_servicesbookings">
+          <ScalarProperty Name="otherservices" ColumnName="otherservices" />
+          <ScalarProperty Name="servicesWithType" ColumnName="servicesWithType" />
           <ScalarProperty Name="isedit" ColumnName="isedit" />
           <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="id" ColumnName="id" />
@@ -254,6 +256,42 @@
           <ScalarProperty Name="data_id" ColumnName="data_id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_glamly_payment">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_payment">
+        <MappingFragment StoreEntitySet="wp_glamly_payment">
+          <ScalarProperty Name="bookingid" ColumnName="bookingid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="transact" ColumnName="transact" />
+          <ScalarProperty Name="timeout" ColumnName="timeout" />
+          <ScalarProperty Name="theme" ColumnName="theme" />
+          <ScalarProperty Name="textreply" ColumnName="textreply" />
+          <ScalarProperty Name="test" ColumnName="test" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="platform" ColumnName="platform" />
+          <ScalarProperty Name="paytype" ColumnName="paytype" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="mobilelib" ColumnName="mobilelib" />
+          <ScalarProperty Name="method" ColumnName="method" />
+          <ScalarProperty Name="merchantid" ColumnName="merchantid" />
+          <ScalarProperty Name="merchant" ColumnName="merchant" />
+          <ScalarProperty Name="lang" ColumnName="lang" />
+          <ScalarProperty Name="fullreply" ColumnName="fullreply" />
+          <ScalarProperty Name="fee" ColumnName="fee" />
+          <ScalarProperty Name="dibsInternalIdentifier" ColumnName="dibsInternalIdentifier" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="cardtype" ColumnName="cardtype" />
+          <ScalarProperty Name="cardprefix" ColumnName="cardprefix" />
+          <ScalarProperty Name="cardnomask" ColumnName="cardnomask" />
+          <ScalarProperty Name="cardexpdate" ColumnName="cardexpdate" />
+          <ScalarProperty Name="calcfee" ColumnName="calcfee" />
+          <ScalarProperty Name="approvalcode" ColumnName="approvalcode" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="acquirer" ColumnName="acquirer" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

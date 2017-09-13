@@ -555,6 +555,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.SaveBookings(GlamlyData.Entities.Booking)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+            
+        </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.GetApprovedBookings(System.String)">
             <summary>
             Get all approved bookings of users
@@ -574,10 +581,65 @@
             Enum define the user status
             </summary>
         </member>
+        <member name="F:GlamlyWebAPI.Library.UserStatusEnum.Active">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.UserStatusEnum.Blocked">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:GlamlyWebAPI.Library.UserTypeEnum">
             <summary>
             Enum define the user type
             </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.UserTypeEnum.Admin">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.UserTypeEnum.Stylist">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.UserTypeEnum.Person">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:GlamlyWebAPI.Library.BookingStatus">
+            <summary>
+            Enum define booking status
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.BookingStatus.Draft">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.BookingStatus.Approved">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.BookingStatus.Rejected">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.BookingStatus.InReporting">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.BookingStatus.Completed">
+            <summary>
+            
+            </summary>        
         </member>
         <member name="T:GlamlyWebAPI.Library.Hashing">
             <summary>
@@ -778,7 +840,7 @@
             <param name="context"></param>
             <returns></returns>
         </member>
-        <member name="M:GlamlyWebAPI.Providers.ApplicationOAuthProvider.CreateProperties(System.String,System.String,System.String)">
+        <member name="M:GlamlyWebAPI.Providers.ApplicationOAuthProvider.CreateProperties(System.String,System.String)">
             <summary>
             CreateProperties
             </summary>

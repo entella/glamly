@@ -152,6 +152,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Booking.cs" />
     <Compile Include="Entities\UserService.cs" />
     <Compile Include="Entities\UserData.cs" />
     <Compile Include="GlamlyDB.Context.cs">
@@ -183,6 +184,9 @@
       <DependentUpon>GlamlyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="wp_duplicator_packages.cs">
+      <DependentUpon>GlamlyDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_glamly_payment.cs">
       <DependentUpon>GlamlyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="wp_glamly_services.cs">

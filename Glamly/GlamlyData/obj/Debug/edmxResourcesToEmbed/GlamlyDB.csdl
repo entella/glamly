@@ -74,6 +74,8 @@
     <Property Name="status" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="userid" Type="Int32" />
     <Property Name="isedit" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="servicesWithType" Type="String" MaxLength="6666" FixedLength="false" Unicode="false" />
+    <Property Name="otherservices" Type="String" MaxLength="6666" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="wp_glamly_servicestypes">
     <Key>
@@ -261,5 +263,41 @@
     <EntitySet Name="wp_users" EntityType="Self.wp_users" />
     <EntitySet Name="wp_cf7_data" EntityType="Self.wp_cf7_data" />
     <EntitySet Name="wp_cf7_data_entry" EntityType="Self.wp_cf7_data_entry" />
+    <EntitySet Name="wp_glamly_payment" EntityType="GlamlyModel.wp_glamly_payment" />
   </EntityContainer>
+  <EntityType Name="wp_glamly_payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="acquirer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="amount" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="approvalcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="calcfee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cardexpdate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cardnomask" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cardprefix" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cardtype" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="currency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="dibsInternalIdentifier" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fee" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fullreply" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="lang" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="merchant" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="merchantid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="method" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mobilelib" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="orderid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="paytype" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="platform" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="test" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="textreply" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="theme" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="timeout" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="transact" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="version" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <Property Name="bookingid" Type="Int32" />
+  </EntityType>
 </Schema>

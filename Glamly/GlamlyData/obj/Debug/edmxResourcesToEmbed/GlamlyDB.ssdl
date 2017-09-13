@@ -65,6 +65,41 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
     <Property Name="owner" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="package" Type="mediumblob" Nullable="false" />
   </EntityType>
+  <EntityType Name="wp_glamly_payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="acquirer" Type="varchar" MaxLength="255" />
+    <Property Name="amount" Type="varchar" MaxLength="255" />
+    <Property Name="approvalcode" Type="varchar" MaxLength="255" />
+    <Property Name="calcfee" Type="varchar" MaxLength="255" />
+    <Property Name="cardexpdate" Type="varchar" MaxLength="255" />
+    <Property Name="cardnomask" Type="varchar" MaxLength="255" />
+    <Property Name="cardprefix" Type="varchar" MaxLength="255" />
+    <Property Name="cardtype" Type="varchar" MaxLength="255" />
+    <Property Name="currency" Type="varchar" MaxLength="255" />
+    <Property Name="dibsInternalIdentifier" Type="varchar" MaxLength="255" />
+    <Property Name="fee" Type="varchar" MaxLength="255" />
+    <Property Name="fullreply" Type="varchar" MaxLength="255" />
+    <Property Name="lang" Type="varchar" MaxLength="255" />
+    <Property Name="merchant" Type="varchar" MaxLength="255" />
+    <Property Name="merchantid" Type="varchar" MaxLength="255" />
+    <Property Name="method" Type="varchar" MaxLength="255" />
+    <Property Name="mobilelib" Type="varchar" MaxLength="255" />
+    <Property Name="orderid" Type="varchar" MaxLength="255" />
+    <Property Name="paytype" Type="varchar" MaxLength="255" />
+    <Property Name="platform" Type="varchar" MaxLength="255" />
+    <Property Name="status" Type="varchar" MaxLength="255" />
+    <Property Name="test" Type="varchar" MaxLength="255" />
+    <Property Name="textreply" Type="varchar" MaxLength="255" />
+    <Property Name="theme" Type="varchar" MaxLength="255" />
+    <Property Name="timeout" Type="varchar" MaxLength="255" />
+    <Property Name="transact" Type="varchar" MaxLength="255" />
+    <Property Name="version" Type="varchar" MaxLength="255" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="bookingid" Type="int" />
+  </EntityType>
   <EntityType Name="wp_glamly_services">
     <Key>
       <PropertyRef Name="id" />
@@ -98,6 +133,8 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
     <Property Name="status" Type="char" MaxLength="5" Nullable="false" />
     <Property Name="userid" Type="int" />
     <Property Name="isedit" Type="char" MaxLength="5" />
+    <Property Name="servicesWithType" Type="varchar" MaxLength="6666" />
+    <Property Name="otherservices" Type="varchar" MaxLength="6666" />
   </EntityType>
   <EntityType Name="wp_glamly_servicestypes">
     <Key>
@@ -249,6 +286,7 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
     <EntitySet Name="wp_commentmeta" EntityType="Self.wp_commentmeta" Schema="wp_glamly" store:Type="Tables" />
     <EntitySet Name="wp_comments" EntityType="Self.wp_comments" Schema="wp_glamly" store:Type="Tables" />
     <EntitySet Name="wp_duplicator_packages" EntityType="Self.wp_duplicator_packages" Schema="wp_glamly" store:Type="Tables" />
+    <EntitySet Name="wp_glamly_payment" EntityType="Self.wp_glamly_payment" Schema="wp_glamly" store:Type="Tables" />
     <EntitySet Name="wp_glamly_services" EntityType="Self.wp_glamly_services" Schema="wp_glamly" store:Type="Tables" />
     <EntitySet Name="wp_glamly_servicesbookings" EntityType="Self.wp_glamly_servicesbookings" Schema="wp_glamly" store:Type="Tables" />
     <EntitySet Name="wp_glamly_servicestypes" EntityType="Self.wp_glamly_servicestypes" Schema="wp_glamly" store:Type="Tables" />
