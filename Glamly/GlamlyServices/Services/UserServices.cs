@@ -182,9 +182,9 @@ namespace GlamlyServices.Services
         }
 
 
-        public wp_glamly_servicesbookings GetBookingById(int id)
+        public wp_glamly_servicesbookings GetBookingById(string id)
         {
-            return _context.wp_glamly_servicesbookings.SingleOrDefault(x => x.id == id);
+            return _context.wp_glamly_servicesbookings.SingleOrDefault(x => x.bookingid == id);
         }
 
         public List<wp_glamly_servicesbookings> GetBookingByStatus(string status)
@@ -277,6 +277,55 @@ namespace GlamlyServices.Services
             catch (Exception ex)
             {
                 throw new Exception();
+            }
+        }
+
+        public int updatebookingdata(wp_glamly_servicesbookings bookings)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    context.Entry(bookings).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return bookings.id;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("booking not updated");
+            }
+        }       
+
+        public List<wp_glamly_payment> GetPaymentList()
+        {
+            return _context.wp_glamly_payment.ToList();
+        }
+
+        public List<wp_glamly_payment> GetPaymentById(int id)
+        {
+            return _context.wp_glamly_payment.Where(x => x.userid == id).ToList();
+        }
+
+        public List<wp_glamly_servicesbookings> GetBookingByUserId(int id)
+        {
+            return _context.wp_glamly_servicesbookings.Where(x => x.userid == id).ToList();
+        }
+
+        public int updateuserdata(wp_usermeta user)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    context.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return Convert.ToInt32(user.user_id);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("User data not updated");
             }
         }
     }

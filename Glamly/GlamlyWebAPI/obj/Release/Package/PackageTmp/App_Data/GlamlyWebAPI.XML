@@ -494,12 +494,19 @@
             <returns></returns>
             
         </member>
-        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetUserdetails">
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetUserdetails(System.Int32)">
             <summary>
             Get the user details by id.
             </summary>
             <returns></returns>
             
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.UpdateUserDetails(GlamlyData.Entities.UserData)">
+            <summary>
+            
+            </summary>
+            <param name="userdata"></param>
+            <returns></returns>
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.GetStylistUser">
             <summary>
@@ -555,13 +562,27 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.SaveBookings(GlamlyData.Entities.Booking)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.UpdateBookings(GlamlyData.Entities.Booking)">
+            <summary>
+            update the booking by bookingid
+            </summary>
+            <param name="bookings"></param>
+            <returns></returns>
+        </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.GetApprovedBookings(System.String)">
             <summary>
             Get all approved bookings of users
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetBookingById(System.Int32)">
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetBookingById(System.String)">
             <summary>
             Get booking by Id
             </summary>
@@ -569,15 +590,92 @@
             <returns></returns>
             
         </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetBookingByUserId(System.Int32)">
+            <summary>
+            Get booking by Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetPaymentById(System.Int32)">
+            <summary>
+            Get payment recipt by userid
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetPaymentList">
+            <summary>
+            Get all services of stylists
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:GlamlyWebAPI.Library.UserStatusEnum">
             <summary>
             Enum define the user status
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.UserStatusEnum.Active">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.UserStatusEnum.Blocked">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:GlamlyWebAPI.Library.UserTypeEnum">
             <summary>
             Enum define the user type
             </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.UserTypeEnum.Admin">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.UserTypeEnum.Stylist">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.UserTypeEnum.Person">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:GlamlyWebAPI.Library.BookingStatus">
+            <summary>
+            Enum define booking status
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.BookingStatus.Draft">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.BookingStatus.Approved">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.BookingStatus.Rejected">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.BookingStatus.InReporting">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.BookingStatus.Completed">
+            <summary>
+            
+            </summary>        
         </member>
         <member name="T:GlamlyWebAPI.Library.Hashing">
             <summary>
@@ -596,6 +694,18 @@
             <summary>
             Helper class provides the common functions for the API
             </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.Helper.random">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:GlamlyWebAPI.Library.Helper.RandomString(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
         </member>
         <member name="M:GlamlyWebAPI.Library.Helper.getPasswordSalt">
             <summary>
@@ -744,6 +854,31 @@
             Error
             </summary>
         </member>
+        <member name="P:GlamlyWebAPI.Library.Token.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:GlamlyWebAPI.Library.Token.FirstName">
+            <summary>
+            FirstName
+            </summary>
+        </member>
+        <member name="P:GlamlyWebAPI.Library.Token.UserEmail">
+            <summary>
+            UserEmail
+            </summary>
+        </member>
+        <member name="P:GlamlyWebAPI.Library.Token.Mobile">
+            <summary>
+            Mobile
+            </summary>
+        </member>
+        <member name="P:GlamlyWebAPI.Library.Token.UserType">
+            <summary>
+            UserType
+            </summary>
+        </member>
         <member name="T:GlamlyWebAPI.Providers.ApplicationOAuthProvider">
             <summary>
             Class to implement the owin authentication
@@ -778,7 +913,7 @@
             <param name="context"></param>
             <returns></returns>
         </member>
-        <member name="M:GlamlyWebAPI.Providers.ApplicationOAuthProvider.CreateProperties(System.String,System.String,System.String)">
+        <member name="M:GlamlyWebAPI.Providers.ApplicationOAuthProvider.CreateProperties(System.String,System.String)">
             <summary>
             CreateProperties
             </summary>

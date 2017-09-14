@@ -32,6 +32,30 @@ namespace GlamlyWebAPI.Library
         /// </summary>
         [JsonProperty("error")]
         public string Error { get; set; }
+        /// <summary>
+        /// Id
+        /// </summary>
+        [JsonProperty("id")]
         public int Id { get; set; }
+        /// <summary>
+        /// FirstName
+        /// </summary>
+        [JsonProperty("firstname")]
+        public string FirstName { get; set; }
+        /// <summary>
+        /// UserEmail
+        /// </summary>
+        [JsonProperty("useremail")]
+        public string UserEmail { get; set; }
+        /// <summary>
+        /// Mobile
+        /// </summary>
+        [JsonProperty("mobile")]
+        public string Mobile { get; set; }
+        /// <summary>
+        /// UserType
+        /// </summary>
+        [JsonProperty("usertype")]
+        public string UserType { get; set; }
     }
 }

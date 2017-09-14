@@ -13,6 +13,8 @@ namespace GlamlyServices.Services
 
         wp_users GetUser(int id);
 
+        int updateuserdata(wp_usermeta user);
+
         List<wp_usermeta> GetStylist();
 
         wp_usermeta GetStylist(int id);
@@ -35,7 +37,9 @@ namespace GlamlyServices.Services
 
         wp_glamly_services GetServicesById(int id);
 
-        wp_glamly_servicesbookings GetBookingById(int id);
+        wp_glamly_servicesbookings GetBookingById(string id);
+
+        List<wp_glamly_servicesbookings> GetBookingByUserId(int id);
 
         wp_users validationUser(string username, string password);
        
@@ -56,6 +60,12 @@ namespace GlamlyServices.Services
 
         int savebookingdata(wp_glamly_servicesbookings bookings);
 
-        int savepaymentdata(wp_glamly_payment payment);
+        int updatebookingdata(wp_glamly_servicesbookings bookings);
+
+        int savepaymentdata(wp_glamly_payment payment);      
+
+        List<wp_glamly_payment> GetPaymentList();
+
+        List<wp_glamly_payment> GetPaymentById(int id);
     }
 }

@@ -15,6 +15,21 @@ namespace GlamlyWebAPI.Library
     /// </summary>
     public class Helper
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        private static Random random = new Random();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
         //public string UserToken
         //{
         //    get

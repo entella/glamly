@@ -44,15 +44,16 @@ namespace GlamlyWebAPI.Providers
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             var user = new wp_users();
-
+            var usercollection = new UserData();
+            
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var allowedOrigin = context.OwinContext.Get<string>("as:clientAllowedOrigin");
             if (allowedOrigin == null) allowedOrigin = "*";
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
-            var form =  context.Request.ReadFormAsync();
+            var form = context.Request.ReadFormAsync();
             string usertypeid = form.Result.Get("usertype");
             string facebookid = form.Result.Get("facebookid");
-          
+
             // Validate your user and base on validation return claim identity or invalid_grant error
             //string email = context.UserName;
             //string password = context.Password;         
@@ -69,7 +70,7 @@ namespace GlamlyWebAPI.Providers
                     if (usermetadata != null)
                     {
                         var desearlize = serialize.Deserialize(usermetadata.meta_value);
-                        UserData usercollection = javaserializer.Deserialize<UserData>(Convert.ToString(desearlize));
+                        usercollection = javaserializer.Deserialize<UserData>(Convert.ToString(desearlize));
                         if (usercollection != null)
                         {
                             usertype = usercollection.user_type;
@@ -78,16 +79,16 @@ namespace GlamlyWebAPI.Providers
                     if (!string.IsNullOrEmpty(context.Password) && usertypeid.Trim().ToLower() == usertype.Trim().ToLower())
                     {
                         hashCode = userdetail.user_activation_key;
-                        encodingPasswordString = Hashing.MD5Hash(context.Password, hashCode);                                                                 
-                        user = _userService.validationUser(context.UserName, encodingPasswordString);                                   
+                        encodingPasswordString = Hashing.MD5Hash(context.Password, hashCode);
+                        user = _userService.validationUser(context.UserName, encodingPasswordString);
                     }
-                    if(usertypeid.Trim().ToLower() == usertype.Trim().ToLower())
-                    {                      
+                    if (usertypeid.Trim().ToLower() == usertype.Trim().ToLower())
+                    {
                         isfacebook = _userService.IsFacebookLogin(Convert.ToInt32(userdetail.ID), facebookid);
                     }
                 }
             }
-            if (isfacebook || user.ID>0)
+            if (isfacebook || user.ID > 0)
             {
                 var claimsIdentity = new ClaimsIdentity(context.Options.AuthenticationType);
                 claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
@@ -98,8 +99,19 @@ namespace GlamlyWebAPI.Providers
                 var props = new AuthenticationProperties(new Dictionary<string, string>
                 {
                     {
-                        "Id", userid.ToString()
-                       // "username", context.UserName;
+                        "Id", !string.IsNullOrEmpty(userid.ToString()) ? userid.ToString() : "null"
+                    },
+                    {
+                        "FirstName", !string.IsNullOrEmpty(usercollection.first_name) ? usercollection.first_name : "null"
+                    },
+                    {
+                        "UserEmail", !string.IsNullOrEmpty(user.user_email) ?  user.user_email : "null"
+                    },
+                    {
+                        "UserType", !string.IsNullOrEmpty(usercollection.user_type) ?  usercollection.user_type  : "null"
+                    },
+                    {
+                        "Mobile", !string.IsNullOrEmpty(usercollection.mobile) ?   usercollection.mobile  :"null"
                     },
                 });
                 var ticket = new AuthenticationTicket(claimsIdentity, props);
@@ -206,7 +218,7 @@ namespace GlamlyWebAPI.Providers
             {
                 { "Id", id },
                 { "userName", userName }
-              
+
             };
             return new AuthenticationProperties(data);
         }
