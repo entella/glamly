@@ -1,0 +1,12 @@
+2017-09-15 19:07:01 - Exception-Substring::Error=System.ArgumentOutOfRangeException: Index and length must refer to a location within the string.
+Parameter name: length
+   at System.String.Substring(Int32 startIndex, Int32 length)
+   at Conversive.PHPSerializationLibrary.Serializer.deserialize(String str)
+   at Conversive.PHPSerializationLibrary.Serializer.Deserialize(String str)
+   at GlamlyWebAPI.Controllers.UsersController.GetBookingByUserId(Int32 id) in D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\Controllers\UsersController.cs:line 987
+2017-09-15 19:11:15 - Exception-Substring::Error=System.ArgumentOutOfRangeException: Index and length must refer to a location within the string.
+Parameter name: length
+   at System.String.Substring(Int32 startIndex, Int32 length)
+   at Conversive.PHPSerializationLibrary.Serializer.deserialize(String str)
+   at Conversive.PHPSerializationLibrary.Serializer.Deserialize(String str)
+   at GlamlyWebAPI.Controllers.UsersController.GetBookingByUserId(Int32 id) in D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\Controllers\UsersController.cs:line 987

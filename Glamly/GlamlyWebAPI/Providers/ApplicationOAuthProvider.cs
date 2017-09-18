@@ -59,6 +59,7 @@ namespace GlamlyWebAPI.Providers
             //string password = context.Password;         
             bool isfacebook = false;
             string usertype = string.Empty;
+            string password = string.Empty;
             if (context.UserName != null)
             {
                 var userdetail = _userService.GetUserByEmailId(context.UserName);
@@ -74,13 +75,15 @@ namespace GlamlyWebAPI.Providers
                         if (usercollection != null)
                         {
                             usertype = usercollection.user_type;
+                            password = usercollection.user_pass;
                         }
                     }
-                    if (!string.IsNullOrEmpty(context.Password) && usertypeid.Trim().ToLower() == usertype.Trim().ToLower())
+                    if (!string.IsNullOrEmpty(context.Password) && usertypeid.Trim().ToLower() == usertype.Trim().ToLower() && password.Trim().ToLower() == context.Password.Trim().ToLower())
                     {
-                        hashCode = userdetail.user_activation_key;
-                        encodingPasswordString = Hashing.MD5Hash(context.Password, hashCode);
-                        user = _userService.validationUser(context.UserName, encodingPasswordString);
+                        // Commented the encodingpassword due to md5 of php in the db
+                       // hashCode = userdetail.user_activation_key;
+                       // encodingPasswordString = Hashing.MD5Hash(context.Password, hashCode);
+                        user = _userService.validationUser(context.UserName);
                     }
                     if (usertypeid.Trim().ToLower() == usertype.Trim().ToLower())
                     {

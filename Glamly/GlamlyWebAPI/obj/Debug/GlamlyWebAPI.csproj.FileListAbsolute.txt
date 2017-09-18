@@ -276,6 +276,8 @@ D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\System.Web.Razor.dll
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\System.Web.WebPages.Deployment.dll
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\System.Web.WebPages.dll
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\System.Web.WebPages.Razor.dll
+D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\WebApi.OutputCache.Core.dll
+D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\WebApi.OutputCache.V2.dll
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\WebGrease.dll
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\GlamlyData.pdb
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\GlamlyServices.pdb

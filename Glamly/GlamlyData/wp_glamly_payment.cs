@@ -43,6 +43,8 @@ namespace GlamlyData
         public string transact { get; set; }
         public string version { get; set; }
         public int userid { get; set; }
-        public Nullable<int> bookingid { get; set; }
+        public string servicewithtypes { get; set; }
+        public string bookingid { get; set; }
+        public string paymentdate { get; set; }
     }
 }

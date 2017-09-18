@@ -58,8 +58,8 @@
     <EntitySetMapping Name="wp_glamly_servicesbookings">
       <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicesbookings">
         <MappingFragment StoreEntitySet="wp_glamly_servicesbookings">
+          <ScalarProperty Name="servicewithtypes" ColumnName="servicewithtypes" />
           <ScalarProperty Name="otherservices" ColumnName="otherservices" />
-          <ScalarProperty Name="servicesWithType" ColumnName="servicesWithType" />
           <ScalarProperty Name="isedit" ColumnName="isedit" />
           <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="id" ColumnName="id" />
@@ -262,7 +262,9 @@
     <EntitySetMapping Name="wp_glamly_payment">
       <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_payment">
         <MappingFragment StoreEntitySet="wp_glamly_payment">
+          <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
           <ScalarProperty Name="bookingid" ColumnName="bookingid" />
+          <ScalarProperty Name="servicewithtypes" ColumnName="servicewithtypes" />
           <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="transact" ColumnName="transact" />

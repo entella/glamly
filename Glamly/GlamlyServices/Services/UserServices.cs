@@ -93,7 +93,7 @@ namespace GlamlyServices.Services
             }
         }
 
-        public wp_users validationUser(string username, string password)
+        public wp_users validationUser(string username)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace GlamlyServices.Services
                 using (var context = new GlamlyEntities())
                 {
 
-                    return context.wp_users.FirstOrDefault(x => x.user_email == username && x.user_pass == password);
+                    return context.wp_users.FirstOrDefault(x => x.user_email == username);
 
                 }
             }
@@ -182,9 +182,9 @@ namespace GlamlyServices.Services
         }
 
 
-        public wp_glamly_servicesbookings GetBookingById(string id)
+        public wp_glamly_servicesbookings GetBookingById(int id)
         {
-            return _context.wp_glamly_servicesbookings.SingleOrDefault(x => x.bookingid == id);
+            return _context.wp_glamly_servicesbookings.SingleOrDefault(x => x.id == id);
         }
 
         public List<wp_glamly_servicesbookings> GetBookingByStatus(string status)
@@ -246,7 +246,7 @@ namespace GlamlyServices.Services
             return isfacebook;
         }
 
-        public int savebookingdata(wp_glamly_servicesbookings bookings)
+        public string savebookingdata(wp_glamly_servicesbookings bookings)
         {
             try
             {
@@ -254,7 +254,7 @@ namespace GlamlyServices.Services
                 {
                     context.Entry(bookings).State = System.Data.Entity.EntityState.Added;
                     context.SaveChanges();
-                    return bookings.id;
+                    return bookings.bookingid;
                 }
             }
             catch (Exception ex)

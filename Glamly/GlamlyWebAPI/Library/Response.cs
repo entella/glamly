@@ -25,50 +25,96 @@ namespace GlamlyWebAPI.Library
             /// Success
             /// </summary>
             OK = 1,
+            /// <summary>
+            /// Invalid API authorization
+            /// </summary>
+            ApiUnauthorized = 2,
 
             /// <summary>
             /// Invalid user authorization
             /// </summary>
-            UserUnauthorized = 2,
+            UserUnauthorized = 3,
+
+            /// <summary>
+            /// The request is missing or has empty parameters
+            /// </summary>
+            BadRequest = 4,
+
+            /// <summary>
+            /// The requested data could not be found
+            /// </summary>
+            NotFound = 5,
+
+            /// <summary>
+            /// The data exists
+            /// </summary>
+            Exists = 6,
 
             /// <summary>
             /// The provided parameters are incorrect.
             /// </summary>
-            InvalidRequest = 3,
+            InvalidRequest = 7,
 
+            /// <summary>
+            /// Unable to send e-mail
+            /// </summary>
+            UnableToSendEmail = 8,
+            /// <summary>
+            /// User email is already registered
+            /// </summary>
+            UserEmailExists = 9,
 
             /// <summary>
             /// Logon error: Wrong e-mail or password
             /// </summary>
-            InvalidUser = 4,
+            InvalidUser = 10,
 
             /// <summary>
-            /// User email is already registered
+            /// User not found.
             /// </summary>
-            UserEmailExists = 5,
+            UserNotFound = 11,
 
             /// <summary>
-            /// Company no already registered
+            /// Password and Confirm password doesn't match
             /// </summary>
-            CompanyExists = 6,
-            /// <summary>
-            /// Server Request
-            /// </summary>
-            Success = 200,
-            /// <summary>
-            /// Invalid API authorization
-            /// </summary>
-            ApiUnauthorized = 8,
+            PasswordConfirmPasswordNotMatch = 12,
             /// <summary>
             /// Invalid email address
             /// </summary>
-            InvalidEmailAddress = 9,
+            InvalidEmailAddress = 13,
+
             /// <summary>
-            /// Already exist
+            /// Invalid password format
             /// </summary>
-            AlreadyExist = 7
+            InvalidPassword = 14,
 
+            /// <summary>
+            /// Forgot password success
+            /// </summary>
+            ForgotPasswordSuccess = 15,
 
+            /// <summary>
+            /// User deletion successful
+            /// </summary>
+            UserDeleteSuccess = 16,
+
+            /// <summary>
+            /// Failed Logout
+            /// </summary>
+            FailedLogout = 17,
+            /// <summary>
+            /// Failed password change
+            /// </summary>
+            Failed_PasswordChange = 18,
+
+            /// <summary>
+            /// Success password change
+            /// </summary>
+            Success_PasswordChange = 19,
+            /// <summary>
+            /// Invalid email or phone number
+            /// </summary>
+            InvalidEmailOrPhone = 20,
 
         }
 
@@ -92,14 +138,50 @@ namespace GlamlyWebAPI.Library
                     return "Internal Server Error." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
                 else if (ResponseCode == Codes.OK)
                     return "Success." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.ApiUnauthorized)
+                    return "API Unauthorized." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
                 else if (ResponseCode == Codes.UserUnauthorized)
                     return "Invalid user authorization." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
                 else if (ResponseCode == Codes.UserEmailExists)
                     return "User already Exist." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.BadRequest)
+                    return "The request is missing or empty parameters." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.NotFound)
+                    return "Requested data not found." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.Exists)
+                    return "User e-mail already exists." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
                 else if (ResponseCode == Codes.InvalidRequest)
-                    return ((!string.IsNullOrWhiteSpace(_message)) ? _message : "Request parameters are incorrect.");
+                    return "Request parameters are incorrect." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.UnableToSendEmail)
+                    return "Unable to send e-mail." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.UserEmailExists)
+                    return "UserEmail already Exist." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.InvalidUser)
+                    return "Wrong username or password." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.UserNotFound)
+                    return "User not found." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.PasswordConfirmPasswordNotMatch)
+                    return "Password confirm does not match password." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.InvalidEmailAddress)
+                    return "Invalid email address." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.InvalidPassword)
+                    return "Invalid password format." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.ForgotPasswordSuccess)
+                    return "Password is sent to your registered e-mail, check your inbox." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.UserDeleteSuccess)
+                    return "User delete successfully." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.FailedLogout)
+                    return "User has been logged out successfully." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.Failed_PasswordChange)
+                    return "Password change failed." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.Success_PasswordChange)
+                    return "Password has been changed successfully." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                else if (ResponseCode == Codes.InvalidEmailOrPhone)
+                    return "User email and phone are invalid." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);              
+                else if (ResponseCode == Codes.UserDeleteSuccess)
+                    return "User delete successfully." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
                 else
-                    return ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
+                    return "Incorrect Inputs." + ((!string.IsNullOrWhiteSpace(_message)) ? (" " + _message) : string.Empty);
             }
             set
             {

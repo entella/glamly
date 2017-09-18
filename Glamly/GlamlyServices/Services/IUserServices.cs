@@ -37,11 +37,11 @@ namespace GlamlyServices.Services
 
         wp_glamly_services GetServicesById(int id);
 
-        wp_glamly_servicesbookings GetBookingById(string id);
+        wp_glamly_servicesbookings GetBookingById(int id);
 
         List<wp_glamly_servicesbookings> GetBookingByUserId(int id);
 
-        wp_users validationUser(string username, string password);
+        wp_users validationUser(string username);
        
         
         int Saveuserdata(wp_users logindata);
@@ -58,7 +58,7 @@ namespace GlamlyServices.Services
 
         bool IsFacebookLogin(int userid,string facebookid);
 
-        int savebookingdata(wp_glamly_servicesbookings bookings);
+        string savebookingdata(wp_glamly_servicesbookings bookings);
 
         int updatebookingdata(wp_glamly_servicesbookings bookings);
 

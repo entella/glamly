@@ -74,8 +74,8 @@
     <Property Name="status" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="userid" Type="Int32" />
     <Property Name="isedit" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-    <Property Name="servicesWithType" Type="String" MaxLength="6666" FixedLength="false" Unicode="false" />
     <Property Name="otherservices" Type="String" MaxLength="6666" FixedLength="false" Unicode="false" />
+    <Property Name="servicewithtypes" Type="String" MaxLength="6666" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="wp_glamly_servicestypes">
     <Key>
@@ -269,7 +269,7 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="acquirer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="amount" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="approvalcode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -298,6 +298,8 @@
     <Property Name="transact" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="version" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="userid" Type="Int32" Nullable="false" />
-    <Property Name="bookingid" Type="Int32" />
+    <Property Name="servicewithtypes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="bookingid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="paymentdate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

@@ -162,4 +162,3 @@ D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyData\bin\MySql.Data.xml
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyData\bin\MySql.Data.Entity.EF6.xml
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyData\obj\Debug\GlamlyData.dll
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyData\obj\Debug\GlamlyData.pdb
-D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyData\obj\Debug\GlamlyData.csprojResolveAssemblyReference.cache

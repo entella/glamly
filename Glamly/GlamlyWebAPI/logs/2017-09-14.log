@@ -1,0 +1,7 @@
+12:30:49.96: exception The 'userid' property on 'wp_glamly_servicesbookings' could not be set to a 'null' value. You must set this property to a non-null value of type 'System.Int32'. 
+12:30:49.99: exception EntityFramework
+12:32:23.69: exception The 'userid' property on 'wp_glamly_servicesbookings' could not be set to a 'null' value. You must set this property to a non-null value of type 'System.Int32'. 
+12:32:23.69: exception EntityFramework
+12:54:27.00: Get users by id
+17:45:38.03: exception Object reference not set to an instance of an object.
+17:45:38.07: exception GlamlyWebAPI

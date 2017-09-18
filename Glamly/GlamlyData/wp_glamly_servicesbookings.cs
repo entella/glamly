@@ -32,9 +32,9 @@ namespace GlamlyData
         public string message { get; set; }
         public string newsletter { get; set; }
         public string status { get; set; }
-        public int userid { get; set; }
+        public Nullable<int> userid { get; set; }
         public string isedit { get; set; }
-        public string servicesWithType { get; set; }
         public string otherservices { get; set; }
+        public string servicewithtypes { get; set; }
     }
 }

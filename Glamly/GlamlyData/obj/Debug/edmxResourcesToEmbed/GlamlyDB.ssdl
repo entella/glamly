@@ -8,7 +8,7 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data' does not have a primary
       <PropertyRef Name="created" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="created" Type="timestamp" Precision="0" Nullable="false" />
+    <Property Name="created" Type="timestamp" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -69,7 +69,7 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="acquirer" Type="varchar" MaxLength="255" />
     <Property Name="amount" Type="varchar" MaxLength="255" />
     <Property Name="approvalcode" Type="varchar" MaxLength="255" />
@@ -98,7 +98,9 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
     <Property Name="transact" Type="varchar" MaxLength="255" />
     <Property Name="version" Type="varchar" MaxLength="255" />
     <Property Name="userid" Type="int" Nullable="false" />
-    <Property Name="bookingid" Type="int" />
+    <Property Name="servicewithtypes" Type="varchar" MaxLength="255" />
+    <Property Name="bookingid" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="paymentdate" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="wp_glamly_services">
     <Key>
@@ -133,7 +135,7 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
     <Property Name="status" Type="char" MaxLength="5" Nullable="false" />
     <Property Name="userid" Type="int" />
     <Property Name="isedit" Type="char" MaxLength="5" />
-    <Property Name="servicesWithType" Type="varchar" MaxLength="6666" />
+    <Property Name="servicewithtypes" Type="varchar" MaxLength="6666" />
     <Property Name="otherservices" Type="varchar" MaxLength="6666" />
   </EntityType>
   <EntityType Name="wp_glamly_servicestypes">

@@ -210,3 +210,5 @@ D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\System.Web.Http.Owin.xml
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\obj\Release\GlamlyWebAPI.csprojResolveAssemblyReference.cache
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\obj\Release\GlamlyWebAPI.dll
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\obj\Release\GlamlyWebAPI.pdb
+D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\WebApi.OutputCache.Core.dll
+D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\WebApi.OutputCache.V2.dll

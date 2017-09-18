@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
-
+using System.Web.Configuration;
 
 namespace GlamlyWebAPI.Library
 {
@@ -49,6 +52,59 @@ namespace GlamlyWebAPI.Library
                     // Close file
                     streamWriter.Close();
                     streamWriter.Dispose();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// To send error on email
+        /// </summary>
+        /// <param name="ex">Exception Object</param>
+        /// <param name="shortDescription">Short Description</param>
+        public static void MailError(Exception ex, string shortDescription = "")
+        {
+            string MailTo = ConfigurationManager.AppSettings["ErrorsEmail"];
+            string MailFrom = ConfigurationManager.AppSettings["FromEmail"];
+
+            if (WebConfigurationManager.AppSettings["SendEmail"] != null ? Convert.ToBoolean(WebConfigurationManager.AppSettings["SendEmail"]) : false)
+            {
+                if (!string.IsNullOrWhiteSpace(MailTo) && !string.IsNullOrWhiteSpace(MailFrom))
+                {
+                    MailMessage mailMessage = new MailMessage();
+
+                    try
+                    {
+                        mailMessage.To.Add(MailTo);
+                        mailMessage.From = new MailAddress(MailFrom);
+                        string host = HttpContext.Current.Request.Url.Host;
+                        mailMessage.Subject = $"Subject: Caught error from api server {host}";
+                        mailMessage.Body = (!string.IsNullOrWhiteSpace(shortDescription) ? shortDescription + Environment.NewLine + Environment.NewLine : "") + ex.ToString();
+
+                        using (SmtpClient smtpClient = new SmtpClient())
+                        {
+                            smtpClient.UseDefaultCredentials = true;
+                            smtpClient.EnableSsl = !string.IsNullOrEmpty(ConfigurationManager.AppSettings["EnableSsl"]) ? Convert.ToBoolean(ConfigurationManager.AppSettings["EnableSsl"]) : true;
+                            smtpClient.Host = !string.IsNullOrEmpty(ConfigurationManager.AppSettings["Host"]) ? ConfigurationManager.AppSettings["Host"] : "smtp.gmail.com";
+                            smtpClient.Port = !string.IsNullOrEmpty(ConfigurationManager.AppSettings["Port"]) ? Convert.ToInt32(ConfigurationManager.AppSettings["Port"]) : 587;
+
+                            NetworkCredential networkCredential = new NetworkCredential();
+
+                            if (ConfigurationManager.AppSettings["UserName"] != null && ConfigurationManager.AppSettings["UserName"] != null)
+                            {
+                                networkCredential.UserName = ConfigurationManager.AppSettings["UserName"];
+                                networkCredential.Password = ConfigurationManager.AppSettings["Password"];
+
+                                smtpClient.Credentials = networkCredential;
+                            }
+
+                            smtpClient.Send(mailMessage);
+                        }
+                    }
+                    catch  //Do not log exeption heare cause it cause infinite loop
+                    {
+
+                    }
                 }
             }
         }

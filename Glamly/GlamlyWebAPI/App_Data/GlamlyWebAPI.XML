@@ -503,10 +503,11 @@
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.UpdateUserDetails(GlamlyData.Entities.UserData)">
             <summary>
-            
+            Update the user data.
             </summary>
             <param name="userdata"></param>
             <returns></returns>
+            
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.GetStylistUser">
             <summary>
@@ -526,7 +527,7 @@
             Register the user 
             </summary>
             <param name="LoginModel"></param>
-            <returns></returns>
+            <returns></returns>        
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.GetServices">
             <summary>
@@ -564,14 +565,14 @@
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.SaveBookings(GlamlyData.Entities.Booking)">
             <summary>
-            
+            Save the bookings 
             </summary>
             <returns></returns>
             
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.UpdateBookings(GlamlyData.Entities.Booking)">
             <summary>
-            update the booking by bookingid
+            Update the booking by bookingid
             </summary>
             <param name="bookings"></param>
             <returns></returns>
@@ -582,7 +583,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetBookingById(System.String)">
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetBookingById(System.Int32)">
             <summary>
             Get booking by Id
             </summary>
@@ -738,6 +739,13 @@
             <param name="fileName"></param>
             
         </member>
+        <member name="M:GlamlyWebAPI.Library.Logs.MailError(System.Exception,System.String)">
+            <summary>
+            To send error on email
+            </summary>
+            <param name="ex">Exception Object</param>
+            <param name="shortDescription">Short Description</param>
+        </member>
         <member name="T:GlamlyWebAPI.Library.Response">
             <summary>
             Response class is response for http source code 
@@ -758,9 +766,29 @@
             Success
             </summary>
         </member>
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.ApiUnauthorized">
+            <summary>
+            Invalid API authorization
+            </summary>
+        </member>
         <member name="F:GlamlyWebAPI.Library.Response.Codes.UserUnauthorized">
             <summary>
             Invalid user authorization
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.BadRequest">
+            <summary>
+            The request is missing or has empty parameters
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.NotFound">
+            <summary>
+            The requested data could not be found
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.Exists">
+            <summary>
+            The data exists
             </summary>
         </member>
         <member name="F:GlamlyWebAPI.Library.Response.Codes.InvalidRequest">
@@ -768,9 +796,9 @@
             The provided parameters are incorrect.
             </summary>
         </member>
-        <member name="F:GlamlyWebAPI.Library.Response.Codes.InvalidUser">
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.UnableToSendEmail">
             <summary>
-            Logon error: Wrong e-mail or password
+            Unable to send e-mail
             </summary>
         </member>
         <member name="F:GlamlyWebAPI.Library.Response.Codes.UserEmailExists">
@@ -778,19 +806,19 @@
             User email is already registered
             </summary>
         </member>
-        <member name="F:GlamlyWebAPI.Library.Response.Codes.CompanyExists">
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.InvalidUser">
             <summary>
-            Company no already registered
+            Logon error: Wrong e-mail or password
             </summary>
         </member>
-        <member name="F:GlamlyWebAPI.Library.Response.Codes.Success">
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.UserNotFound">
             <summary>
-            Server Request
+            User not found.
             </summary>
         </member>
-        <member name="F:GlamlyWebAPI.Library.Response.Codes.ApiUnauthorized">
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.PasswordConfirmPasswordNotMatch">
             <summary>
-            Invalid API authorization
+            Password and Confirm password doesn't match
             </summary>
         </member>
         <member name="F:GlamlyWebAPI.Library.Response.Codes.InvalidEmailAddress">
@@ -798,9 +826,39 @@
             Invalid email address
             </summary>
         </member>
-        <member name="F:GlamlyWebAPI.Library.Response.Codes.AlreadyExist">
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.InvalidPassword">
             <summary>
-            Already exist
+            Invalid password format
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.ForgotPasswordSuccess">
+            <summary>
+            Forgot password success
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.UserDeleteSuccess">
+            <summary>
+            User deletion successful
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.FailedLogout">
+            <summary>
+            Failed Logout
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.Failed_PasswordChange">
+            <summary>
+            Failed password change
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.Success_PasswordChange">
+            <summary>
+            Success password change
+            </summary>
+        </member>
+        <member name="F:GlamlyWebAPI.Library.Response.Codes.InvalidEmailOrPhone">
+            <summary>
+            Invalid email or phone number
             </summary>
         </member>
         <member name="P:GlamlyWebAPI.Library.Response.ResponseCode">
