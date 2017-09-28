@@ -29,8 +29,6 @@ namespace GlamlyData
         public virtual DbSet<wp_comments> wp_comments { get; set; }
         public virtual DbSet<wp_duplicator_packages> wp_duplicator_packages { get; set; }
         public virtual DbSet<wp_glamly_services> wp_glamly_services { get; set; }
-        public virtual DbSet<wp_glamly_servicesbookings> wp_glamly_servicesbookings { get; set; }
-        public virtual DbSet<wp_glamly_servicestypes> wp_glamly_servicestypes { get; set; }
         public virtual DbSet<wp_links> wp_links { get; set; }
         public virtual DbSet<wp_mondula_form_wizards> wp_mondula_form_wizards { get; set; }
         public virtual DbSet<wp_options> wp_options { get; set; }
@@ -44,6 +42,8 @@ namespace GlamlyData
         public virtual DbSet<wp_users> wp_users { get; set; }
         public virtual DbSet<wp_cf7_data> wp_cf7_data { get; set; }
         public virtual DbSet<wp_cf7_data_entry> wp_cf7_data_entry { get; set; }
+        public virtual DbSet<wp_glamly_servicesbookings> wp_glamly_servicesbookings { get; set; }
         public virtual DbSet<wp_glamly_payment> wp_glamly_payment { get; set; }
+        public virtual DbSet<wp_glamly_servicestypes> wp_glamly_servicestypes { get; set; }
     }
 }

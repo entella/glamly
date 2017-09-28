@@ -1,0 +1,4 @@
+2017-09-18 17:15:08 - Exception-GetPaymentById::Error=System.InvalidCastException: Unable to cast object of type 'System.Object' to type 'System.String'.
+   at GlamlyWebAPI.Controllers.UsersController.GetPaymentById(Int32 id) in D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\Controllers\UsersController.cs:line 1041
+2017-09-18 17:16:45 - Exception-GetPaymentById::Error=System.InvalidCastException: Unable to cast object of type 'System.Object' to type 'System.String'.
+   at GlamlyWebAPI.Controllers.UsersController.GetPaymentById(Int32 id) in D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\Controllers\UsersController.cs:line 1041

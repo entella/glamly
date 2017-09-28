@@ -505,7 +505,7 @@
             <summary>
             Update the user data.
             </summary>
-            <param name="userdata"></param>
+            <param name="LoginModel"></param>
             <returns></returns>
             
         </member>
@@ -528,6 +528,12 @@
             </summary>
             <param name="LoginModel"></param>
             <returns></returns>        
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetServicesList">
+            <summary>
+            Get Service list 
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.GetServices">
             <summary>
@@ -577,10 +583,17 @@
             <param name="bookings"></param>
             <returns></returns>
         </member>
-        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetApprovedBookings(System.String)">
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetApprovedBookings(System.Int32)">
             <summary>
             Get all approved bookings of users
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetCancelBookings(System.Int32)">
+            <summary>
+            Get the cancel booking of users
+            </summary>
+            <param name="userid"></param>
             <returns></returns>
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.GetBookingById(System.Int32)">
@@ -599,6 +612,14 @@
             <returns></returns>
             
         </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.DeleteBooking(System.String)">
+            <summary>
+            delete booking by Id
+            </summary>
+            <param name="bookingid"></param>
+            <returns></returns>
+            
+        </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.GetPaymentById(System.Int32)">
             <summary>
             Get payment recipt by userid
@@ -611,6 +632,13 @@
             <summary>
             Get all services of stylists
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.DeletePaymentRecipt(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="bookingid"></param>
             <returns></returns>
         </member>
         <member name="T:GlamlyWebAPI.Library.UserStatusEnum">

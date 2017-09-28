@@ -178,20 +178,20 @@ namespace GlamlyServices.Services
 
         public List<wp_glamly_servicesbookings> GetBookings()
         {
-            return _context.wp_glamly_servicesbookings.ToList();
+            return _context.wp_glamly_servicesbookings.Where(b=>b.isdeleted == "false").ToList();
         }
 
 
         public wp_glamly_servicesbookings GetBookingById(int id)
         {
-            return _context.wp_glamly_servicesbookings.SingleOrDefault(x => x.id == id);
+            return _context.wp_glamly_servicesbookings.SingleOrDefault(x => x.id == id && x.isdeleted == "false");
         }
 
-        public List<wp_glamly_servicesbookings> GetBookingByStatus(string status)
+        public List<wp_glamly_servicesbookings> GetBookingByStatus(int userid,string status)
         {
             try
             {
-                return _context.wp_glamly_servicesbookings.Where(x => x.status == status).ToList();
+                return _context.wp_glamly_servicesbookings.Where(x => x.status == status && x.userid == userid).ToList();
 
             }
             catch (Exception ex)
@@ -299,17 +299,17 @@ namespace GlamlyServices.Services
 
         public List<wp_glamly_payment> GetPaymentList()
         {
-            return _context.wp_glamly_payment.ToList();
+            return _context.wp_glamly_payment.Where(b => b.isdeleted == "false").ToList();
         }
 
         public List<wp_glamly_payment> GetPaymentById(int id)
         {
-            return _context.wp_glamly_payment.Where(x => x.userid == id).ToList();
+            return _context.wp_glamly_payment.Where(x => x.userid == id &&  x.isdeleted == "false").ToList();
         }
 
         public List<wp_glamly_servicesbookings> GetBookingByUserId(int id)
         {
-            return _context.wp_glamly_servicesbookings.Where(x => x.userid == id).ToList();
+            return _context.wp_glamly_servicesbookings.Where(x => x.userid == id && x.isdeleted == "false").ToList();
         }
 
         public int updateuserdata(wp_usermeta user)
@@ -327,6 +327,49 @@ namespace GlamlyServices.Services
             {
                 throw new Exception("User data not updated");
             }
+        }
+
+        public bool DeleteBooking(string bookingid)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    var userToDelete = context.wp_glamly_servicesbookings.FirstOrDefault(x => x.bookingid == bookingid);
+                    userToDelete.isdeleted = "true";
+                    context.Entry(userToDelete).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool DeletePaymentRecipt(string bookingid)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    var userToDelete = context.wp_glamly_payment.FirstOrDefault(x => x.bookingid == bookingid);
+                    userToDelete.isdeleted = "true";
+                    context.Entry(userToDelete).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<wp_glamly_services> GetServiceList()
+        {
+            return _context.wp_glamly_services.ToList();
         }
     }
 

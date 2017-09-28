@@ -45,7 +45,8 @@ namespace GlamlyWebAPI.Library
         /// <summary>
         /// 
         /// </summary>
-        Draft = 0,
+     
+         Draft = 0,
         
       /// <summary>
       /// 

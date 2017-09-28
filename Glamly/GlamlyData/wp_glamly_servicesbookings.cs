@@ -34,7 +34,8 @@ namespace GlamlyData
         public string status { get; set; }
         public Nullable<int> userid { get; set; }
         public string isedit { get; set; }
-        public string otherservices { get; set; }
         public string servicewithtypes { get; set; }
+        public string otherservices { get; set; }
+        public string isdeleted { get; set; }
     }
 }

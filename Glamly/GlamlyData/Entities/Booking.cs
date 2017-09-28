@@ -5,7 +5,7 @@ using System.Web;
 
 namespace GlamlyData.Entities
 {
-    public class Servicewithtype
+    public class ServiceWithType
     {
         public string servicename { get; set; }
         public string typename { get; set; }
@@ -67,7 +67,7 @@ namespace GlamlyData.Entities
         public string status { get; set; }
         public int userid { get; set; }
         public string isedit { get; set; } 
-        public List<Servicewithtype> servicewithtypes { get; set; }
+        public List<ServiceWithType> servicewithtypes { get; set; }
         public Payment payment { get; set; }
     }
 }

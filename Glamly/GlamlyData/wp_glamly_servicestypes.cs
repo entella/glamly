@@ -18,5 +18,6 @@ namespace GlamlyData
         public string typename { get; set; }
         public int serviceid { get; set; }
         public int status { get; set; }
+        public Nullable<int> price { get; set; }
     }
 }

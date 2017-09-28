@@ -29,11 +29,13 @@ namespace GlamlyServices.Services
 
         List<wp_glamly_services> GetServices();
 
+        List<wp_glamly_services> GetServiceList();
+
         List<wp_glamly_services> GetServicesTypes(int id);
 
         List<wp_glamly_servicesbookings> GetBookings();
   
-        List<wp_glamly_servicesbookings> GetBookingByStatus(string status);            
+        List<wp_glamly_servicesbookings> GetBookingByStatus(int userid,string status);            
 
         wp_glamly_services GetServicesById(int id);
 
@@ -67,5 +69,9 @@ namespace GlamlyServices.Services
         List<wp_glamly_payment> GetPaymentList();
 
         List<wp_glamly_payment> GetPaymentById(int id);
+
+        bool DeleteBooking(string userid);
+
+        bool DeletePaymentRecipt(string bookingid);
     }
 }
