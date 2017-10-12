@@ -68,7 +68,7 @@ namespace GlamlyData.Entities
         /// <summary>
         /// 
         /// </summary>
-        public string token { get; set; }
+        public string devicetoken { get; set; }
        
 
 

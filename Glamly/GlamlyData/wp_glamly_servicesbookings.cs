@@ -37,5 +37,7 @@ namespace GlamlyData
         public string servicewithtypes { get; set; }
         public string otherservices { get; set; }
         public string isdeleted { get; set; }
+        public Nullable<int> stylistid { get; set; }
+        public Nullable<int> workflowstatus { get; set; }
     }
 }

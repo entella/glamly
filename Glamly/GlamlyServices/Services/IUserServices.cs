@@ -23,6 +23,8 @@ namespace GlamlyServices.Services
 
         wp_usermeta GetUserDetailById(int id);
 
+        List<wp_glamly_servicestypes> GetServiceTypes();
+
         wp_glamly_servicestypes GetServiceTypeById(int id);
 
         List<wp_glamly_servicestypes> GetTypesByServiceId(int id);
@@ -73,5 +75,45 @@ namespace GlamlyServices.Services
         bool DeleteBooking(string userid);
 
         bool DeletePaymentRecipt(string bookingid);
+
+
+        bool DeleteServiceType(int Serviceid);
+
+        int updateservicetypes(wp_glamly_servicestypes types);
+
+        int SaveServicetype(wp_glamly_servicestypes types);
+
+        bool ApprovedBookingByAdmin(string bookingid);
+
+        int GetIdByName(string serviceName);
+
+        List<wp_glamly_servicesbookings> GetApprovedBookingByAdmin(int stylistid);
+
+        List<wp_glamly_servicesbookings> GetApprovedBookingByPro(int stylistid);
+
+        string AcceptBookingByPro(string bookingid);
+
+        string AcceptedBookingByUser(string bookingid);
+
+        int GetBookingCountByUserId(int userid);
+
+        int GetBookingCountByStylistId(int userid);
+
+        int Updateotherservices(string bookingid, string otherservices);
+
+        int SaveEditBookingPaymentRecipt(wp_glamly_payment payment);
+
+        string GetUnderlagdata(string bookingid);
+
+        List<wp_glamly_servicesbookings> GetBookingIdByPro(int stylistid);
+
+        wp_glamly_payment GetUnderlagPaymentdata(string bookingid);
+
+        bool DeletePaymentReceiptById(int paymentid);
+
+        bool SetUserResetPassword(UserResetPassword userResetPassword);
+
+        bool DeleteUserResetPasswordByUserId(int userId);
+
     }
 }

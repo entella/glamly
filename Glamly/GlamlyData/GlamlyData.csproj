@@ -153,8 +153,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Booking.cs" />
+    <Compile Include="Entities\ChangePassword.cs" />
+    <Compile Include="Entities\Services.cs" />
+    <Compile Include="Entities\UserResetPassword.cs" />
     <Compile Include="Entities\UserService.cs" />
     <Compile Include="Entities\UserData.cs" />
+    <Compile Include="Entities\Workflow.cs" />
     <Compile Include="GlamlyDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -196,6 +200,12 @@
       <DependentUpon>GlamlyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="wp_glamly_servicestypes.cs">
+      <DependentUpon>GlamlyDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_glamly_stylistschedules.cs">
+      <DependentUpon>GlamlyDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="wp_glamly_userresetpassword.cs">
       <DependentUpon>GlamlyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="wp_links.cs">

@@ -42,8 +42,10 @@ namespace GlamlyData
         public virtual DbSet<wp_users> wp_users { get; set; }
         public virtual DbSet<wp_cf7_data> wp_cf7_data { get; set; }
         public virtual DbSet<wp_cf7_data_entry> wp_cf7_data_entry { get; set; }
+        public virtual DbSet<wp_glamly_servicestypes> wp_glamly_servicestypes { get; set; }
         public virtual DbSet<wp_glamly_servicesbookings> wp_glamly_servicesbookings { get; set; }
         public virtual DbSet<wp_glamly_payment> wp_glamly_payment { get; set; }
-        public virtual DbSet<wp_glamly_servicestypes> wp_glamly_servicestypes { get; set; }
+        public virtual DbSet<wp_glamly_stylistschedules> wp_glamly_stylistschedules { get; set; }
+        public virtual DbSet<wp_glamly_userresetpassword> wp_glamly_userresetpassword { get; set; }
     }
 }

@@ -1,0 +1,6 @@
+2017-10-05 14:38:33 - Exception-savepaymentdata::Error=System.Exception: Exception of type 'System.Exception' was thrown.
+   at GlamlyServices.Services.UserServices.savepaymentdata(wp_glamly_payment payment) in D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\Services\UserServices.cs:line 279
+   at GlamlyWebAPI.Controllers.UsersController.AcceptedBookingByUser(PaymentReceipt payment) in D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\Controllers\UsersController.cs:line 1574
+2017-10-05 14:44:33 - Exception-savepaymentdata::Error=System.Exception: Exception of type 'System.Exception' was thrown.
+   at GlamlyServices.Services.UserServices.savepaymentdata(wp_glamly_payment payment) in D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\Services\UserServices.cs:line 279
+   at GlamlyWebAPI.Controllers.UsersController.AcceptedBookingByUser(PaymentReceipt payment) in D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\Controllers\UsersController.cs:line 1574

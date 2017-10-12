@@ -178,7 +178,7 @@ namespace GlamlyServices.Services
 
         public List<wp_glamly_servicesbookings> GetBookings()
         {
-            return _context.wp_glamly_servicesbookings.Where(b=>b.isdeleted == "false").ToList();
+            return _context.wp_glamly_servicesbookings.Where(b => b.isdeleted == "false" && !string.IsNullOrEmpty(b.servicewithtypes)).ToList();
         }
 
 
@@ -370,6 +370,264 @@ namespace GlamlyServices.Services
         public List<wp_glamly_services> GetServiceList()
         {
             return _context.wp_glamly_services.ToList();
+        }
+
+        public List<wp_glamly_servicestypes> GetServiceTypes()
+        {
+            return _context.wp_glamly_servicestypes.ToList();
+        }
+        public int updateservicetypes(wp_glamly_servicestypes types)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    context.Entry(types).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return Convert.ToInt32(types.id);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("User data not updated");
+            }
+        }
+
+        public int SaveServicetype(wp_glamly_servicestypes types)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    context.Entry(types).State = System.Data.Entity.EntityState.Added;
+                    context.SaveChanges();
+                    return types.id;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+
+        public bool DeleteServiceType(int Serviceid)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    var userToDelete = context.wp_glamly_servicestypes.FirstOrDefault(x => x.id == Serviceid);
+                    userToDelete.status = 0;
+                    context.Entry(userToDelete).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool ApprovedBookingByAdmin(string bookingid)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    var userToDelete = context.wp_glamly_servicesbookings.FirstOrDefault(x => x.bookingid == bookingid);
+                    userToDelete.workflowstatus = (int)BookingStatus.ApprovedByAdmin;
+                    context.Entry(userToDelete).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public int GetIdByName(string serviceName)
+        {
+            return _context.wp_glamly_services.Where(x => x.servicename == serviceName.Trim()).FirstOrDefault().id;
+        }
+
+        public List<wp_glamly_servicesbookings> GetApprovedBookingByAdmin(int stylistid)
+        {
+            return _context.wp_glamly_servicesbookings.Where(x => x.workflowstatus == 11 && x.stylistid== stylistid).ToList();
+        }
+
+
+        public List<wp_glamly_servicesbookings> GetApprovedBookingByPro(int stylistid)
+        {
+            return _context.wp_glamly_servicesbookings.Where(x => x.stylistid == stylistid && x.workflowstatus == 21).ToList();
+        }
+
+
+        public string AcceptBookingByPro(string bookingid)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    var userToUpdate = context.wp_glamly_servicesbookings.FirstOrDefault(x => x.bookingid == bookingid);
+                    userToUpdate.workflowstatus = (int)BookingStatus.ApprovedByProUser;                    
+                    context.Entry(userToUpdate).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return bookingid;
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        public string AcceptedBookingByUser(string bookingid)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    var userToUpdate = context.wp_glamly_servicesbookings.FirstOrDefault(x => x.bookingid == bookingid);
+                    userToUpdate.workflowstatus = (int)BookingStatus.AcceptBookingByUser;
+                    userToUpdate.isedit = "false";
+                    context.Entry(userToUpdate).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return bookingid;
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+
+        public int GetBookingCountByUserId(int userid)
+        {
+            return _context.wp_glamly_servicesbookings.Count(x => x.userid == userid && x.isdeleted=="false");
+        }    
+
+        public int Updateotherservices(string bookingid, string otherservices)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    var userToUpdate = context.wp_glamly_servicesbookings.FirstOrDefault(x => x.bookingid == bookingid);
+                    userToUpdate.otherservices = otherservices;
+                    userToUpdate.isedit = "true";
+                    context.Entry(userToUpdate).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return userToUpdate.id;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public int SaveEditBookingPaymentRecipt(wp_glamly_payment payment)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    context.Entry(payment).State = System.Data.Entity.EntityState.Added;
+                    context.SaveChanges();
+                    return payment.id;
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public int GetBookingCountByStylistId(int stylistid)
+        {
+            return _context.wp_glamly_servicesbookings.Count(x => x.stylistid == stylistid && x.isdeleted == "false");
+        }
+
+        public string GetUnderlagdata(string bookingid)
+        {
+            return _context.wp_glamly_payment.Where(x => x.bookingid == bookingid).FirstOrDefault().amount;           
+        }
+
+        public wp_glamly_payment GetUnderlagPaymentdata(string bookingid)
+        {
+            return _context.wp_glamly_payment.FirstOrDefault(x => x.bookingid == bookingid);            
+        }
+
+        public List<wp_glamly_servicesbookings> GetBookingIdByPro(int stylistid)
+        {
+            return _context.wp_glamly_servicesbookings.Where(x => x.stylistid == stylistid && x.workflowstatus == 31).ToList();
+        }
+
+
+        public bool DeletePaymentReceiptById(int paymentid)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    var userToDelete = context.wp_glamly_payment.FirstOrDefault(x => x.id == paymentid);
+                    userToDelete.isdeleted = "true";
+                    context.Entry(userToDelete).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool SetUserResetPassword(UserResetPassword userResetPassword)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    var userResetPasswordObjectDB = context.wp_glamly_userresetpassword.FirstOrDefault(x => x.userid == userResetPassword.UserId);
+                    if (userResetPasswordObjectDB != null)
+                        context.Entry(userResetPasswordObjectDB).State = System.Data.Entity.EntityState.Deleted;
+                    wp_glamly_userresetpassword obj = new wp_glamly_userresetpassword();
+                    obj.userid = userResetPassword.UserId;
+                    obj.userkey = userResetPassword.UserKey;
+                    obj.requesttime = userResetPassword.RequestTime;
+                    context.Entry(obj).State = System.Data.Entity.EntityState.Added;
+                    context.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+
+        public bool DeleteUserResetPasswordByUserId(int userId)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    var userResetPasswordToDelete = context.wp_glamly_userresetpassword.FirstOrDefault(x => x.userid == userId);
+                    context.Entry(userResetPasswordToDelete).State = System.Data.Entity.EntityState.Deleted;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
     }
 

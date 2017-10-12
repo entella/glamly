@@ -47,5 +47,6 @@ namespace GlamlyData
         public string bookingid { get; set; }
         public string paymentdate { get; set; }
         public string isdeleted { get; set; }
+        public string otherservices { get; set; }
     }
 }

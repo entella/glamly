@@ -51,7 +51,7 @@ namespace GlamlyWebAPI.Providers
             if (allowedOrigin == null) allowedOrigin = "*";
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
             var form = context.Request.ReadFormAsync();
-            string usertypeid = form.Result.Get("usertype");
+           // string usertypeid = form.Result.Get("usertype");
             string facebookid = form.Result.Get("facebookid");
 
             // Validate your user and base on validation return claim identity or invalid_grant error
@@ -78,17 +78,18 @@ namespace GlamlyWebAPI.Providers
                             password = usercollection.user_pass;
                         }
                     }
-                    if (!string.IsNullOrEmpty(context.Password) && usertypeid.Trim().ToLower() == usertype.Trim().ToLower() && password.Trim().ToLower() == context.Password.Trim().ToLower())
+                    if (!string.IsNullOrEmpty(context.Password) &&  password.Trim().ToLower() == context.Password.Trim().ToLower())
                     {
                         // Commented the encodingpassword due to md5 of php in the db
                        // hashCode = userdetail.user_activation_key;
                        // encodingPasswordString = Hashing.MD5Hash(context.Password, hashCode);
                         user = _userService.validationUser(context.UserName);
+                       // isfacebook = _userService.IsFacebookLogin(Convert.ToInt32(userdetail.ID), facebookid);
                     }
-                    if (usertypeid.Trim().ToLower() == usertype.Trim().ToLower())
-                    {
+                    //if (usertypeid.Trim().ToLower() == usertype.Trim().ToLower())
+                    //{
                         isfacebook = _userService.IsFacebookLogin(Convert.ToInt32(userdetail.ID), facebookid);
-                    }
+                    //}
                 }
             }
             if (isfacebook || user.ID > 0)
@@ -111,7 +112,7 @@ namespace GlamlyWebAPI.Providers
                         "UserEmail", !string.IsNullOrEmpty(user.user_email) ?  user.user_email : "null"
                     },
                     {
-                        "UserType", !string.IsNullOrEmpty(usercollection.user_type) ?  usercollection.user_type  : "null"
+                        "UserType", !string.IsNullOrEmpty(usercollection.user_type) ?  usercollection.user_type  : "Customer"
                     },
                     {
                         "Mobile", !string.IsNullOrEmpty(usercollection.mobile) ?   usercollection.mobile  :"null"

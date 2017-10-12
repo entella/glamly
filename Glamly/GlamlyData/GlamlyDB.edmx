@@ -106,7 +106,8 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
           <Property Name="servicewithtypes" Type="varchar" MaxLength="255" />
           <Property Name="bookingid" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="paymentdate" Type="varchar" MaxLength="255" />
-          <Property Name="isdeleted" Type="char" MaxLength="5" />
+          <Property Name="isdeleted" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="otherservices" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="wp_glamly_services">
           <Key>
@@ -143,7 +144,9 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
           <Property Name="isedit" Type="char" MaxLength="5" />
           <Property Name="servicewithtypes" Type="varchar" MaxLength="5000" />
           <Property Name="otherservices" Type="varchar" MaxLength="5000" />
-          <Property Name="isdeleted" Type="char" MaxLength="5" />
+          <Property Name="isdeleted" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="stylistid" Type="int" />
+          <Property Name="workflowstatus" Type="int" />
         </EntityType>
         <EntityType Name="wp_glamly_servicestypes">
           <Key>
@@ -154,6 +157,24 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
           <Property Name="serviceid" Type="int" Nullable="false" />
           <Property Name="status" Type="int" Nullable="false" />
           <Property Name="price" Type="int" />
+        </EntityType>
+        <EntityType Name="wp_glamly_stylistschedules">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stylistId" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="isdeleted" Type="char" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="wp_glamly_userresetpassword">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" />
+          <Property Name="userkey" Type="varchar" MaxLength="45" />
+          <Property Name="requesttime" Type="date" />
         </EntityType>
         <EntityType Name="wp_links">
           <Key>
@@ -300,6 +321,8 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
           <EntitySet Name="wp_glamly_services" EntityType="Self.wp_glamly_services" Schema="wp_glamly" store:Type="Tables" />
           <EntitySet Name="wp_glamly_servicesbookings" EntityType="Self.wp_glamly_servicesbookings" Schema="wp_glamly" store:Type="Tables" />
           <EntitySet Name="wp_glamly_servicestypes" EntityType="Self.wp_glamly_servicestypes" Schema="wp_glamly" store:Type="Tables" />
+          <EntitySet Name="wp_glamly_stylistschedules" EntityType="Self.wp_glamly_stylistschedules" Schema="wp_glamly" store:Type="Tables" />
+          <EntitySet Name="wp_glamly_userresetpassword" EntityType="Self.wp_glamly_userresetpassword" Schema="wp_glamly" store:Type="Tables" />
           <EntitySet Name="wp_links" EntityType="Self.wp_links" Schema="wp_glamly" store:Type="Tables" />
           <EntitySet Name="wp_mondula_form_wizards" EntityType="Self.wp_mondula_form_wizards" Schema="wp_glamly" store:Type="Tables" />
           <EntitySet Name="wp_options" EntityType="Self.wp_options" Schema="wp_glamly" store:Type="Tables" />
@@ -556,15 +579,27 @@ FROM `wp_cf7_data_entry` AS `wp_cf7_data_entry`</DefiningQuery>
           <EntitySet Name="wp_users" EntityType="Self.wp_users" />
           <EntitySet Name="wp_cf7_data" EntityType="Self.wp_cf7_data" />
           <EntitySet Name="wp_cf7_data_entry" EntityType="Self.wp_cf7_data_entry" />
+          <EntitySet Name="wp_glamly_servicestypes" EntityType="GlamlyModel.wp_glamly_servicestypes" />
           <EntitySet Name="wp_glamly_servicesbookings" EntityType="GlamlyModel.wp_glamly_servicesbookings" />
           <EntitySet Name="wp_glamly_payment" EntityType="GlamlyModel.wp_glamly_payment" />
-          <EntitySet Name="wp_glamly_servicestypes" EntityType="GlamlyModel.wp_glamly_servicestypes" />
+          <EntitySet Name="wp_glamly_stylistschedules" EntityType="GlamlyModel.wp_glamly_stylistschedules" />
+          <EntitySet Name="wp_glamly_userresetpassword" EntityType="GlamlyModel.wp_glamly_userresetpassword" />
         </EntityContainer>
-        <EntityType Name="wp_glamly_servicesbookings">
+        <EntityType Name="wp_glamly_servicestypes">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typename" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="serviceid" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Int32" />
+        </EntityType>
+        <EntityType Name="wp_glamly_servicesbookings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="bookingid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="service" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="type" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
@@ -586,7 +621,9 @@ FROM `wp_cf7_data_entry` AS `wp_cf7_data_entry`</DefiningQuery>
           <Property Name="isedit" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="servicewithtypes" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Name="otherservices" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
-          <Property Name="isdeleted" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="isdeleted" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="stylistid" Type="Int32" />
+          <Property Name="workflowstatus" Type="Int32" />
         </EntityType>
         <EntityType Name="wp_glamly_payment">
           <Key>
@@ -624,17 +661,26 @@ FROM `wp_cf7_data_entry` AS `wp_cf7_data_entry`</DefiningQuery>
           <Property Name="servicewithtypes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="bookingid" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="paymentdate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="isdeleted" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="isdeleted" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="otherservices" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="wp_glamly_servicestypes">
+        <EntityType Name="wp_glamly_stylistschedules">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="typename" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="serviceid" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="Int32" Nullable="false" />
-          <Property Name="price" Type="Int32" />
+          <Property Name="stylistId" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <Property Name="isdeleted" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="wp_glamly_userresetpassword">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" />
+          <Property Name="userkey" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="requesttime" Type="DateTime" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -862,9 +908,22 @@ FROM `wp_cf7_data_entry` AS `wp_cf7_data_entry`</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="wp_glamly_servicestypes">
+            <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicestypes">
+              <MappingFragment StoreEntitySet="wp_glamly_servicestypes">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="serviceid" ColumnName="serviceid" />
+                <ScalarProperty Name="typename" ColumnName="typename" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="wp_glamly_servicesbookings">
             <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicesbookings">
               <MappingFragment StoreEntitySet="wp_glamly_servicesbookings">
+                <ScalarProperty Name="workflowstatus" ColumnName="workflowstatus" />
+                <ScalarProperty Name="stylistid" ColumnName="stylistid" />
                 <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
                 <ScalarProperty Name="otherservices" ColumnName="otherservices" />
                 <ScalarProperty Name="servicewithtypes" ColumnName="servicewithtypes" />
@@ -894,6 +953,7 @@ FROM `wp_cf7_data_entry` AS `wp_cf7_data_entry`</DefiningQuery>
           <EntitySetMapping Name="wp_glamly_payment">
             <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_payment">
               <MappingFragment StoreEntitySet="wp_glamly_payment">
+                <ScalarProperty Name="otherservices" ColumnName="otherservices" />
                 <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
                 <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
                 <ScalarProperty Name="bookingid" ColumnName="bookingid" />
@@ -930,13 +990,22 @@ FROM `wp_cf7_data_entry` AS `wp_cf7_data_entry`</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="wp_glamly_servicestypes">
-            <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicestypes">
-              <MappingFragment StoreEntitySet="wp_glamly_servicestypes">
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="serviceid" ColumnName="serviceid" />
-                <ScalarProperty Name="typename" ColumnName="typename" />
+          <EntitySetMapping Name="wp_glamly_stylistschedules">
+            <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_stylistschedules">
+              <MappingFragment StoreEntitySet="wp_glamly_stylistschedules">
+                <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="stylistId" ColumnName="stylistId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wp_glamly_userresetpassword">
+            <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_userresetpassword">
+              <MappingFragment StoreEntitySet="wp_glamly_userresetpassword">
+                <ScalarProperty Name="requesttime" ColumnName="requesttime" />
+                <ScalarProperty Name="userkey" ColumnName="userkey" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -1,0 +1,4 @@
+2017-09-28 16:27:49 - Exception-GetApprovedBookings::Error=System.InvalidCastException: Unable to cast object of type 'System.String' to type 'System.Collections.IList'.
+   at GlamlyWebAPI.Controllers.UsersController.GetApprovedBookings(Int32 userid) in D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\Controllers\UsersController.cs:line 951
+2017-09-28 16:43:16 - Exception-GetApprovedBookings::Error=System.InvalidCastException: Unable to cast object of type 'System.String' to type 'System.Collections.IList'.
+   at GlamlyWebAPI.Controllers.UsersController.GetApprovedBookings(Int32 userid)

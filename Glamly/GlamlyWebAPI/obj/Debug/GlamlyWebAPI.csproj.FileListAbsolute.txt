@@ -211,7 +211,6 @@ D:\Glamly API\Glamly\GlamlyWebAPI\bin\System.Web.Http.Owin.xml
 D:\Glamly API\Glamly\GlamlyWebAPI\obj\Debug\GlamlyWebAPI.csprojResolveAssemblyReference.cache
 D:\Glamly API\Glamly\GlamlyWebAPI\obj\Debug\GlamlyWebAPI.dll
 D:\Glamly API\Glamly\GlamlyWebAPI\obj\Debug\GlamlyWebAPI.pdb
-D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\obj\Debug\GlamlyWebAPI.csprojResolveAssemblyReference.cache
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\ApplicationInsights.config
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\roslyn\csc.exe
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -318,5 +317,6 @@ D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\Microsoft.Owin.Security.Googl
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\bin\System.Web.Http.Owin.xml
+D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\obj\Debug\GlamlyWebAPI.csprojResolveAssemblyReference.cache
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\obj\Debug\GlamlyWebAPI.dll
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyWebAPI\obj\Debug\GlamlyWebAPI.pdb

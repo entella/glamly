@@ -641,70 +641,124 @@
             <param name="bookingid"></param>
             <returns></returns>
         </member>
-        <member name="T:GlamlyWebAPI.Library.UserStatusEnum">
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.UpdateService(GlamlyData.Entities.Services)">
             <summary>
-            Enum define the user status
+            
             </summary>
+            <param name="service"></param>
+            <returns></returns>
         </member>
-        <member name="F:GlamlyWebAPI.Library.UserStatusEnum.Active">
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.AddServiceType(System.String,System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="ServiceType"></param>
+            <param name="Price"></param>
+            <param name="ServiceName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.DeleteService(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.AssignedBookingByAdmin(System.Int32)">
+            <summary>
+            Get all assigned booking by admin
+            </summary>
+            <param name="stylistid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.AcceptedBookingByPro(System.String)">
+            <summary>
+            Accepted booking by pro user 
+            </summary>
+            <param name="bookingid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetApprovedBookingByPro(System.Int32)">
+            <summary>
+            Get approved booking by Pro"
+            </summary>   
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.AcceptedBookingByUser(GlamlyData.Entities.PaymentReceipt)">
+            <summary>
+            Accepted booking by user and update payment recipt
+            </summary>
+            <param name="payment"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetBookingCountByUser(System.Int32)">
+            <summary>
+            Get booking count by user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.Updateotherservices(GlamlyData.Entities.updatebooking)">
+            <summary>
+            update the otherservice of booking
+            </summary>
+            <param name="updateotherservice"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.GetUnderlagdataByPro(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="stylistid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.DeletePaymentReciptById(System.Int32)">
+            <summary>
+            Delete single payment receipt by id
+            </summary>
+            <param name="paymentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.UpdateDeviceTokenByUserId(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="userid"></param>
+            <param name="devicetoken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.SendForgetPasswordEmail(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="emailId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GlamlyWebAPI.Library.EmailHelper">
             <summary>
             
             </summary>
         </member>
-        <member name="F:GlamlyWebAPI.Library.UserStatusEnum.Blocked">
+        <member name="M:GlamlyWebAPI.Library.EmailHelper.SendEmailWithTemplatedAddStylistUser(System.String,System.String,System.String)">
             <summary>
             
             </summary>
+            <param name="useremail"></param>
+            <param name="password"></param>
+            <param name="username"></param>
         </member>
-        <member name="T:GlamlyWebAPI.Library.UserTypeEnum">
-            <summary>
-            Enum define the user type
-            </summary>
-        </member>
-        <member name="F:GlamlyWebAPI.Library.UserTypeEnum.Admin">
+        <member name="M:GlamlyWebAPI.Library.EmailHelper.SendEmailWithTemplateResetPasswordUser(System.Int32,System.String)">
             <summary>
             
             </summary>
+            <param name="userId"></param>
+            <param name="subject"></param>
         </member>
-        <member name="F:GlamlyWebAPI.Library.UserTypeEnum.Stylist">
+        <member name="M:GlamlyWebAPI.Library.EmailHelper.GetUserKeyForPasswordByUserId(System.Int32)">
             <summary>
             
             </summary>
-        </member>
-        <member name="F:GlamlyWebAPI.Library.UserTypeEnum.Person">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:GlamlyWebAPI.Library.BookingStatus">
-            <summary>
-            Enum define booking status
-            </summary>
-        </member>
-        <member name="F:GlamlyWebAPI.Library.BookingStatus.Draft">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:GlamlyWebAPI.Library.BookingStatus.Approved">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:GlamlyWebAPI.Library.BookingStatus.Rejected">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:GlamlyWebAPI.Library.BookingStatus.InReporting">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:GlamlyWebAPI.Library.BookingStatus.Completed">
-            <summary>
-            
-            </summary>        
+            <param name="userId"></param>
+            <returns></returns>
         </member>
         <member name="T:GlamlyWebAPI.Library.Hashing">
             <summary>
@@ -909,6 +963,18 @@
             <summary>
             Response data payload
             </summary>
+        </member>
+        <member name="T:GlamlyWebAPI.Library.StringExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:GlamlyWebAPI.Library.StringExtensions.GetValueFromWebConfig(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
         </member>
         <member name="T:GlamlyWebAPI.Library.Token">
             <summary>

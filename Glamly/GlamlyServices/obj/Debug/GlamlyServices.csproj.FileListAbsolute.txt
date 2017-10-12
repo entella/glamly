@@ -116,7 +116,6 @@ D:\Glamly API\Glamly\GlamlyServices\bin\Microsoft.CodeDom.Providers.DotNetCompil
 D:\Glamly API\Glamly\GlamlyServices\obj\Debug\GlamlyServices.csprojResolveAssemblyReference.cache
 D:\Glamly API\Glamly\GlamlyServices\obj\Debug\GlamlyServices.dll
 D:\Glamly API\Glamly\GlamlyServices\obj\Debug\GlamlyServices.pdb
-D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\obj\Debug\GlamlyServices.csprojResolveAssemblyReference.cache
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\bin\ApplicationInsights.config
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\bin\roslyn\csc.exe
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -154,5 +153,6 @@ D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\bin\Microsoft.AI.Web.xml
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\bin\Microsoft.AI.WindowsServer.xml
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\bin\Microsoft.ApplicationInsights.xml
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\obj\Debug\GlamlyServices.csprojResolveAssemblyReference.cache
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\obj\Debug\GlamlyServices.dll
 D:\Glamly API\GlamlyWebAPI\Glamly\GlamlyServices\obj\Debug\GlamlyServices.pdb

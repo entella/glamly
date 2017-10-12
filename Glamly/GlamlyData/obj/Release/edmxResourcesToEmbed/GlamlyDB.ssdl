@@ -101,7 +101,8 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
     <Property Name="servicewithtypes" Type="varchar" MaxLength="255" />
     <Property Name="bookingid" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="paymentdate" Type="varchar" MaxLength="255" />
-    <Property Name="isdeleted" Type="char" MaxLength="5" />
+    <Property Name="isdeleted" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="otherservices" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="wp_glamly_services">
     <Key>
@@ -138,7 +139,9 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
     <Property Name="isedit" Type="char" MaxLength="5" />
     <Property Name="servicewithtypes" Type="varchar" MaxLength="5000" />
     <Property Name="otherservices" Type="varchar" MaxLength="5000" />
-    <Property Name="isdeleted" Type="char" MaxLength="5" />
+    <Property Name="isdeleted" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="stylistid" Type="int" />
+    <Property Name="workflowstatus" Type="int" />
   </EntityType>
   <EntityType Name="wp_glamly_servicestypes">
     <Key>

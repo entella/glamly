@@ -29,6 +29,7 @@ namespace GlamlyWebAPI.Controllers
         #region Variables
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         private IUserServices _userService = new UserServices();
+        EmailHelper emailHelper = new EmailHelper();
         Helper helpers = new Helper();
         Serializer serialize = new Serializer();
         JavaScriptSerializer javaserializer = new JavaScriptSerializer();
@@ -289,8 +290,7 @@ namespace GlamlyWebAPI.Controllers
                        {
                            {"grant_type", "password"},
                            {"username", user.user_email},
-                           {"password", user.user_pass},
-                           {"usertype", user.user_type},
+                           {"password", user.user_pass},                         
                            {"facebookid", user.user_facebookid},
                        };
                         var tokenResponse = client.PostAsync(baseAddress + "/AuthenticationToken", new FormUrlEncodedContent(form)).Result;
@@ -304,6 +304,7 @@ namespace GlamlyWebAPI.Controllers
                             typeObject.Add("Userid", Convert.ToString(token.Id));
                             typeObject.Add("FirstName", Convert.ToString(token.FirstName));
                             typeObject.Add("UserEmail", Convert.ToString(user.user_email));
+                            typeObject.Add("UserType", Convert.ToString(token.UserType));
                             typeObject.Add("Mobile", Convert.ToString(token.Mobile));
                             resp.ResponseData = typeObject;
                             resp.ResponseCode = Response.Codes.OK;
@@ -405,7 +406,7 @@ namespace GlamlyWebAPI.Controllers
                             obj.user_nicename = "";
                             obj.user_pass = "";
                             obj.user_registered = DateTime.MinValue;
-                            obj.user_status = 1;
+                            obj.user_status = 0;
                             obj.user_url = "";
                             obj.user_activation_key = "";
                             obj.display_name = "";
@@ -780,15 +781,16 @@ namespace GlamlyWebAPI.Controllers
                     booking.email = !string.IsNullOrEmpty(bookings.email) ? bookings.email : string.Empty;
                     booking.firstname = !string.IsNullOrEmpty(bookings.firstname) ? bookings.firstname : string.Empty;
                     booking.surname = !string.IsNullOrEmpty(bookings.surname) ? bookings.surname : string.Empty;
-                    booking.isedit = !string.IsNullOrEmpty(bookings.isedit) ? bookings.isedit : string.Empty;
+                    booking.isedit = !string.IsNullOrEmpty(bookings.isedit) ? bookings.isedit : "false";
                     booking.zipcode = !string.IsNullOrEmpty(bookings.zipcode) ? bookings.zipcode : string.Empty;
-                    booking.phone = !string.IsNullOrEmpty(bookings.phone) ? bookings.datetime : string.Empty;
-                    booking.newsletter = !string.IsNullOrEmpty(bookings.newsletter) ? bookings.datetime : string.Empty;
-                    booking.message = !string.IsNullOrEmpty(bookings.message) ? bookings.datetime : string.Empty;
-                    booking.message = !string.IsNullOrEmpty(bookings.status) ? bookings.datetime : string.Empty;
-                    booking.personal = !string.IsNullOrEmpty(bookings.personal) ? bookings.datetime : string.Empty;
-                    booking.billingaddress = !string.IsNullOrEmpty(bookings.billingaddress) ? bookings.datetime : string.Empty;
-                    booking.status = !string.IsNullOrEmpty(bookings.status) ? bookings.datetime : string.Empty;
+                    booking.phone = !string.IsNullOrEmpty(bookings.phone) ? bookings.phone : string.Empty;
+                    booking.newsletter = !string.IsNullOrEmpty(bookings.newsletter) ? bookings.newsletter : string.Empty;
+                    booking.message = !string.IsNullOrEmpty(bookings.message) ? bookings.message : string.Empty;
+                    booking.status = !string.IsNullOrEmpty(bookings.status) ? bookings.status : string.Empty;
+                    booking.personal = !string.IsNullOrEmpty(bookings.personal) ? bookings.personal : string.Empty;
+                    booking.isdeleted = !string.IsNullOrEmpty(bookings.isdeleted) ? bookings.isdeleted : "false";
+                    booking.workflowstatus = (int)BookingStatus.Draft;
+                    booking.stylistid = 0;
                     booking.userid = bookings.userid > 0 ? bookings.userid : 0;
                     string bookingid = _userService.savebookingdata(booking);
                     wp_glamly_payment payment = new wp_glamly_payment();
@@ -819,8 +821,9 @@ namespace GlamlyWebAPI.Controllers
                     payment.theme = !string.IsNullOrEmpty(bookings.payment.theme) ? bookings.payment.theme : string.Empty;
                     payment.timeout = !string.IsNullOrEmpty(bookings.payment.timeout) ? bookings.payment.timeout : string.Empty;
                     payment.transact = !string.IsNullOrEmpty(bookings.payment.transact) ? bookings.payment.transact : string.Empty;
-                    payment.userid = bookings.payment.userid > 0 ? bookings.payment.userid : 0;
+                    payment.userid = bookings.userid > 0 ? bookings.userid : 0;
                     payment.version = !string.IsNullOrEmpty(bookings.payment.version) ? bookings.payment.version : string.Empty;
+                    payment.isdeleted = !string.IsNullOrEmpty(bookings.isdeleted) ? bookings.isdeleted : "false";
                     payment.servicewithtypes = !string.IsNullOrEmpty(serialize.Serialize(jsonservicelist)) ? serialize.Serialize(jsonservicelist) : string.Empty;
                     payment.paymentdate = !string.IsNullOrEmpty(bookings.datetime) ? bookings.datetime : string.Empty;
                     var userid = _userService.savepaymentdata(payment);
@@ -898,7 +901,7 @@ namespace GlamlyWebAPI.Controllers
                     bookingdetail.personal = bookings.personal;
                     bookingdetail.billingaddress = bookings.billingaddress;
                     bookingdetail.status = bookings.status;
-                    bookingdetail.otherservices = bookingdetail.otherservices;
+                    bookingdetail.otherservices = bookings.otherservices;
                     var bookingid = _userService.updatebookingdata(bookingdetail);
                     if (bookingid > 0)
                     {
@@ -944,6 +947,16 @@ namespace GlamlyWebAPI.Controllers
 
                 if (servicesbookingsList != null)
                 {
+
+                    foreach (var item in servicesbookingsList)
+                    {
+                        if (!string.IsNullOrEmpty(item.servicewithtypes))
+                        {
+                            var desearlize = serialize.Deserialize(item.servicewithtypes);
+                            item.servicewithtypes = (string)desearlize;
+                        }
+                    }
+                 
                     resp.ResponseCode = Response.Codes.OK;
                     resp.ResponseData = servicesbookingsList;
                 }
@@ -1056,7 +1069,13 @@ namespace GlamlyWebAPI.Controllers
                             var desearlize = serialize.Deserialize(item.servicewithtypes);
                             item.servicewithtypes = (string)desearlize;
                         }
-                           
+                        if (!string.IsNullOrEmpty(item.otherservices))
+                        {
+                            var desearlizeotherservice = serialize.Deserialize(item.otherservices);
+                            item.otherservices = (string)desearlizeotherservice;
+                        }
+
+
                     }
 
                     if (bookingsList.Count > 0)
@@ -1146,6 +1165,12 @@ namespace GlamlyWebAPI.Controllers
                             var desearlize = serialize.Deserialize(item.servicewithtypes);
                             item.servicewithtypes = (string)desearlize;
                         }
+                        if (!string.IsNullOrEmpty(item.otherservices))
+                        {
+                            var desearlizeotherservice = serialize.Deserialize(item.otherservices);
+                            item.otherservices = (string)desearlizeotherservice;
+                        }
+
                     }
 
                     if (paymentList.Count > 0)
@@ -1237,6 +1262,609 @@ namespace GlamlyWebAPI.Controllers
             }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="service"></param>
+        /// <returns></returns>
+         [Route("updateservices"), HttpPut]       
+        public ResponseExtended<System.Web.Mvc.JsonResult> UpdateService(Services service)
+        {
+            var resp = new ResponseExtended<System.Web.Mvc.JsonResult>();
+            try
+            {
+                var servicename = _userService.GetServiceTypes().Where(s => s.id == service.Id);
+                bool checkservicetype = _userService.GetServiceTypes().Exists(x => x.typename == service.typeName && x.id == service.Id);
+                int result = 0;
+                if (checkservicetype == false)
+                {
+                    wp_glamly_servicestypes obj = new wp_glamly_servicestypes();
+                    obj.typename = service.typeName;
+                    obj.price = service.Price;
+                    obj.id = service.Id;
+                    obj.serviceid = servicename.FirstOrDefault().serviceid;
+                    obj.status = servicename.FirstOrDefault().status;
+                    result = _userService.updateservicetypes(obj);
+                    if (result > 0)
+                        resp.ResponseCode = Response.Codes.OK;
+                }
+                else
+                {
+                    resp.ResponseCode = Response.Codes.NotFound;
+                }
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "UpdateService");
+                resp.ResponseCode = Response.Codes.InternalServerError;
+                return resp;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ServiceType"></param>
+        /// <param name="Price"></param>
+        /// <param name="ServiceName"></param>
+        /// <returns></returns>
+        [Route("addservicestypes"), HttpPost]
+        public ResponseExtended<System.Web.Mvc.JsonResult> AddServiceType(string ServiceType, int Price, string ServiceName)
+        {
+            var resp = new ResponseExtended<System.Web.Mvc.JsonResult>();
+            try
+            {
+                bool checkservicetype = _userService.GetServiceTypes().Exists(x => x.typename == ServiceName);
+                int result = 0;
+                if (checkservicetype == false)
+                {
+                    wp_glamly_servicestypes obj = new wp_glamly_servicestypes();
+                    obj.typename = ServiceType;
+                    obj.price = Price;
+                    obj.status = 1;
+                    obj.serviceid = _userService.GetIdByName(ServiceName);
+                    result = _userService.SaveServicetype(obj);
+                    if (result > 0)
+                        resp.ResponseCode = Response.Codes.OK;
+                }
+                else
+                {
+                    resp.ResponseCode = Response.Codes.Exists;
+                }
+                return resp;
+            }
+            catch (Exception ex)
+            {
+
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "AddServiceType");
+                resp.ResponseCode = Response.Codes.InternalServerError;
+                return resp;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("deleteservices"), HttpDelete]
+        public ResponseExtended<System.Web.Mvc.JsonResult> DeleteService(int id)
+        {
+            var resp = new ResponseExtended<System.Web.Mvc.JsonResult>();
+            try
+            {
+                var isdelete = _userService.DeleteServiceType(id);
+                if (isdelete)
+                {
+                    resp.ResponseCode = Response.Codes.OK;
+                }
+
+                else
+                {
+                    resp.ResponseCode = Response.Codes.NotFound;
+                }
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "DeleteServiceType");
+                resp.ResponseCode = Response.Codes.InternalServerError;
+                return resp;
+            }
+
+        }
+      
+        /// <summary>
+        /// Get all assigned booking by admin
+        /// </summary>
+        /// <param name="stylistid"></param>
+        /// <returns></returns>
+        [Route("assignedbookingbyadmin/{stylistid}"), HttpGet]
+        public ResponseExtended<List<wp_glamly_servicesbookings>> AssignedBookingByAdmin( int stylistid)
+        {
+            var resp = new ResponseExtended<List<wp_glamly_servicesbookings>>();
+            var bookingsList = new List<wp_glamly_servicesbookings>();
+            try
+            {
+                bookingsList = _userService.GetApprovedBookingByAdmin(stylistid);
+
+                if (bookingsList != null)
+                {
+
+                    foreach (var item in bookingsList)
+                    {
+                        if (!string.IsNullOrEmpty(item.servicewithtypes))
+                        {
+                            var desearlizeservicetype = serialize.Deserialize(item.servicewithtypes);
+                            item.servicewithtypes = (string)desearlizeservicetype;
+                        }
+                        if (!string.IsNullOrEmpty(item.otherservices))
+                        {
+                            var desearlizeotherservice = serialize.Deserialize(item.otherservices);
+                            item.otherservices = (string)desearlizeotherservice;
+                        }
+
+                    }
+
+                    if (bookingsList.Count > 0)
+                    {
+                        resp.ResponseCode = Response.Codes.OK;
+                        resp.ResponseData = bookingsList;
+                    }
+                    else
+                    {
+                        resp.ResponseCode = Response.Codes.NotFound;
+                    }
+                }
+                else
+                {
+                    resp.ResponseCode = Response.Codes.NotFound;
+                }
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "GetApprovedBookingByAdmin");
+                resp.ResponseCode = Response.Codes.InternalServerError;
+                return resp;
+            }
+
+        }
+       /// <summary>
+       /// Accepted booking by pro user 
+       /// </summary>
+       /// <param name="bookingid"></param>
+       /// <returns></returns>
+        [Route("acceptedbookingbypro/{bookingid}"), HttpPut]
+        public ResponseExtended<System.Web.Mvc.JsonResult> AcceptedBookingByPro(string bookingid)
+        {
+            var resp = new ResponseExtended<System.Web.Mvc.JsonResult>();
+           
+            try
+            {
+                var booking = _userService.AcceptBookingByPro(bookingid);
+                if (!string.IsNullOrEmpty(booking))
+                {
+                    resp.ResponseCode = Response.Codes.OK;
+                }
+
+                else
+                {
+                    resp.ResponseCode = Response.Codes.NotFound;
+                }
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "GetApprovedBookingByPro");
+                resp.ResponseCode = Response.Codes.InternalServerError;
+                return resp;
+            }
+
+        }
+        /// <summary>
+        /// Get approved booking by Pro"
+        /// </summary>   
+        /// <returns></returns>
+        [Route("getapprovedbookingbypro/{stylistid}"), HttpGet]
+        public ResponseExtended<List<wp_glamly_servicesbookings>> GetApprovedBookingByPro(int stylistid)
+        {
+            var resp = new ResponseExtended<List<wp_glamly_servicesbookings>>();
+            var bookingsList = new List<wp_glamly_servicesbookings>();
+            try
+            {
+                bookingsList = _userService.GetApprovedBookingByPro(stylistid);
+                if (bookingsList != null)
+                {
+
+                    foreach (var item in bookingsList)
+                    {
+                        if (!string.IsNullOrEmpty(item.servicewithtypes))
+                        {
+                            var desearlize = serialize.Deserialize(item.servicewithtypes);
+                            item.servicewithtypes = (string)desearlize;
+                        }
+                        if (!string.IsNullOrEmpty(item.otherservices))
+                        {
+                            var desearlizeotherservice = serialize.Deserialize(item.otherservices);
+                            item.otherservices = (string)desearlizeotherservice;
+                        }
+
+                    }
+
+                    if (bookingsList.Count > 0)
+                    {
+                        resp.ResponseCode = Response.Codes.OK;
+                        resp.ResponseData = bookingsList;
+                    }
+                    else
+                    {
+                        resp.ResponseCode = Response.Codes.NotFound;
+                    }
+                }
+                else
+                {
+                    resp.ResponseCode = Response.Codes.NotFound;
+                }
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "GetApprovedBookingByPro");
+                resp.ResponseCode = Response.Codes.InternalServerError;
+                return resp;
+            }
+
+        }
+
+        /// <summary>
+        /// Accepted booking by user and update payment recipt
+        /// </summary>
+        /// <param name="payment"></param>
+        /// <returns></returns>
+        [Route("acceptbookingbyuser"), HttpPost]
+        public ResponseExtended<System.Web.Mvc.JsonResult> AcceptedBookingByUser(PaymentReceipt payment)
+        {
+            var resp = new ResponseExtended<System.Web.Mvc.JsonResult>();
+            string jsonservicelist = string.Empty;
+            string jsonservices = string.Empty;
+            string jsontypes = string.Empty;
+            string jsongpaymentlist = string.Empty;
+            try
+            {
+               if(payment!=null)
+                {
+                    jsonservicelist = JsonConvert.SerializeObject(payment.otherservices);
+                    wp_glamly_payment wp_payment = new wp_glamly_payment();
+                    wp_payment.acquirer = !string.IsNullOrEmpty(payment.acquirer) ? payment.acquirer : string.Empty;
+                    wp_payment.amount = !string.IsNullOrEmpty(payment.amount) ? payment.amount : string.Empty;
+                    wp_payment.approvalcode = !string.IsNullOrEmpty(payment.approvalcode) ? payment.approvalcode : string.Empty;
+                    wp_payment.bookingid = !string.IsNullOrEmpty(payment.bookingid) ? payment.bookingid : string.Empty;
+                    wp_payment.calcfee = !string.IsNullOrEmpty(payment.calcfee) ? payment.calcfee : string.Empty;
+                    wp_payment.cardexpdate = !string.IsNullOrEmpty(payment.cardexpdate) ? payment.cardexpdate : string.Empty;
+                    wp_payment.cardnomask = !string.IsNullOrEmpty(payment.cardnomask) ? payment.cardnomask : string.Empty;
+                    wp_payment.cardprefix = !string.IsNullOrEmpty(payment.cardprefix) ? payment.cardprefix : string.Empty;
+                    wp_payment.cardtype = !string.IsNullOrEmpty(payment.cardtype) ? payment.cardtype : string.Empty;
+                    wp_payment.currency = !string.IsNullOrEmpty(payment.currency) ? payment.currency : string.Empty;
+                    wp_payment.dibsInternalIdentifier = !string.IsNullOrEmpty(payment.dibsInternalIdentifier) ? payment.dibsInternalIdentifier : string.Empty;
+                    wp_payment.fee = Convert.ToString(payment.fee); 
+                    wp_payment.fullreply = !string.IsNullOrEmpty(payment.fullreply) ? payment.fullreply : string.Empty;
+                    wp_payment.lang = !string.IsNullOrEmpty(payment.lang) ? payment.lang : string.Empty;
+                    wp_payment.merchant = !string.IsNullOrEmpty(payment.merchant) ? payment.merchant : string.Empty;
+                    wp_payment.merchantid = Convert.ToString(payment.merchantid);
+                    wp_payment.method = !string.IsNullOrEmpty(payment.method) ? payment.method : string.Empty;
+                    wp_payment.mobilelib = !string.IsNullOrEmpty(payment.mobilelib) ? payment.mobilelib : string.Empty;
+                    wp_payment.orderid = !string.IsNullOrEmpty(payment.orderid) ? payment.orderid : string.Empty;
+                    wp_payment.paytype = !string.IsNullOrEmpty(payment.paytype) ? payment.paytype : string.Empty;
+                    wp_payment.platform = !string.IsNullOrEmpty(payment.platform) ? payment.platform : string.Empty;
+                    wp_payment.status = !string.IsNullOrEmpty(payment.status) ? payment.status : string.Empty;
+                    wp_payment.test = !string.IsNullOrEmpty(payment.test) ? payment.test : string.Empty;
+                    wp_payment.textreply = !string.IsNullOrEmpty(payment.textreply) ? payment.textreply : string.Empty;
+                    wp_payment.theme = !string.IsNullOrEmpty(payment.theme) ? payment.theme : string.Empty;
+                    wp_payment.timeout = !string.IsNullOrEmpty(payment.timeout) ? payment.timeout : string.Empty;
+                    wp_payment.transact = !string.IsNullOrEmpty(payment.transact) ? payment.transact : string.Empty;
+                    wp_payment.userid = payment.userid > 0 ? payment.userid : 0;
+                    wp_payment.version = !string.IsNullOrEmpty(payment.version) ? payment.version : string.Empty;
+                    wp_payment.servicewithtypes = null;
+                    wp_payment.isdeleted = !string.IsNullOrEmpty(payment.isdeleted) ? payment.isdeleted : "false";
+                    wp_payment.otherservices = !string.IsNullOrEmpty(serialize.Serialize(jsonservicelist)) ? serialize.Serialize(jsonservicelist) : string.Empty;
+                    wp_payment.paymentdate = !string.IsNullOrEmpty(payment.paymentdate) ? payment.paymentdate : string.Empty;
+                    var userid = _userService.savepaymentdata(wp_payment);
+                    _userService.AcceptedBookingByUser(payment.bookingid);
+
+                    if (userid > 0)
+                    {
+                        resp.ResponseCode = Response.Codes.OK;
+                    }
+
+                    else
+                    {
+                        resp.ResponseCode = Response.Codes.NotFound;
+                    }
+                   
+                }
+                else
+                {
+                    resp.ResponseMessage = "Provided parameters are incorrect";
+                    resp.ResponseCode = Response.Codes.InvalidRequest;
+                }
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "GetApprovedBookingByPro");
+                resp.ResponseCode = Response.Codes.InternalServerError;
+                return resp;
+            }
+        }
+        /// <summary>
+        /// Get booking count by user
+        /// </summary>
+        /// <returns></returns>
+        [Route("getcountofuserbooking/{userid}"), HttpGet]
+        public int GetBookingCountByUser(int userid)
+        {          
+            int bookingcount = 0;
+            try
+            {
+                bookingcount = _userService.GetBookingCountByUserId(userid);
+                return bookingcount;           
+            }
+            catch (Exception ex)
+            {
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "GetApprovedBookingByPro");
+                return 0;        
+            }
+
+        }
+
+     /// <summary>
+     /// update the otherservice of booking
+     /// </summary>
+     /// <param name="updateotherservice"></param>
+     /// <returns></returns>
+        [Route("updateotherservices"), HttpPost]
+        public ResponseExtended<System.Web.Mvc.JsonResult> Updateotherservices(updatebooking updateotherservice)
+        {  
+            ResponseExtended<System.Web.Mvc.JsonResult> resp = new ResponseExtended<System.Web.Mvc.JsonResult>();
+           // wp_glamly_servicesbookings bookingdetail = _userService.GetBookingById(Convert.ToInt32(bookingid));
+            string jsonservicelist = string.Empty;
+            string otherservice = string.Empty;
+            jsonservicelist = JsonConvert.SerializeObject(updateotherservice.otherservices);
+            otherservice = serialize.Serialize(jsonservicelist);
+
+            try
+            {
+                if (updateotherservice.bookingid != null)
+                {                                            
+                    var id = _userService.Updateotherservices(updateotherservice.bookingid, otherservice);
+                    if (id > 0)
+                    {
+                        resp.ResponseCode = Response.Codes.OK;
+                        resp.ResponseMessage = "Booking has been updated successfully";
+                    }
+                    else
+                    {
+                        resp.ResponseMessage = "Provided parameters are incorrect";
+                        resp.ResponseCode = Response.Codes.InvalidRequest;
+                    }
+                }
+                else
+                {
+                    resp.ResponseMessage = "Provided parameters are incorrect";
+                    resp.ResponseCode = Response.Codes.InvalidRequest;
+                }
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "updatebookings");
+                resp.ResponseCode = Response.Codes.InternalServerError;
+                return resp;
+            }
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stylistid"></param>
+        /// <returns></returns>
+        [Route("getUnderlagdataByPro/{stylistid}"), HttpGet]
+        public ResponseExtended<UnderLag> GetUnderlagdataByPro(int stylistid)
+        {
+            int totalbooking = 0, totalincome = 0, totalassign = 0;
+            var resp = new ResponseExtended<UnderLag>();
+            UnderLag obj = new UnderLag();
+            wp_glamly_payment objpay = new wp_glamly_payment();
+           // var servicesbookingsList = new List<wp_glamly_servicesbookings>();
+
+            try
+            {
+                totalbooking = _userService.GetBookingCountByStylistId(stylistid);
+
+                List<wp_glamly_servicesbookings> bookingids = _userService.GetBookingIdByPro(stylistid);
+
+                if (bookingids != null)
+                {
+                    foreach (var item in bookingids)
+                    {
+                        
+                            totalincome += Convert.ToInt32(_userService.GetUnderlagdata(item.bookingid));
+
+                        objpay =  _userService.GetUnderlagPaymentdata(item.bookingid);     
+                        if (objpay!=null && objpay.otherservices != null)
+                        {
+                            totalassign += Convert.ToInt32(objpay.amount);
+                        }
+                                                   
+                    }
+                }
+
+                obj.BookingsCount = totalbooking;
+                obj.TotalIncome = totalincome;
+                obj.StatisticsCount = totalassign;
+
+                if (obj != null)
+                {
+                    resp.ResponseCode = Response.Codes.OK;
+                    resp.ResponseData = obj;
+                }
+                else
+                {
+                    resp.ResponseCode = Response.Codes.NotFound;
+                }
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "GetApprovedBookingByPro");
+                resp.ResponseCode = Response.Codes.InternalServerError;
+                return resp;
+            }
+
+        }
+
+        /// <summary>
+        /// Delete single payment receipt by id
+        /// </summary>
+        /// <param name="paymentId"></param>
+        /// <returns></returns>
+        [Route("deletePaymentReciptById/{paymentId}"), HttpDelete]
+        public ResponseExtended<System.Web.Mvc.JsonResult> DeletePaymentReciptById(int paymentId)
+        {
+            var resp = new ResponseExtended<System.Web.Mvc.JsonResult>();
+            try
+            {
+                var isdelete = _userService.DeletePaymentReceiptById(paymentId);
+                if (isdelete)
+                {
+                    resp.ResponseCode = Response.Codes.OK;
+                }
+
+                else
+                {
+                    resp.ResponseCode = Response.Codes.NotFound;
+                }
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "deletePaymentReciptById");
+                resp.ResponseCode = Response.Codes.InternalServerError;
+                return resp;
+            }
+
+        }
+
+        #region "Puch Notification"
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="devicetoken"></param>
+        /// <returns></returns>
+        [Route("updateDeviceTokenByUserId"), HttpPut]
+        public ResponseExtended<System.Web.Mvc.JsonResult> UpdateDeviceTokenByUserId(int userid, string devicetoken)
+        {
+            ResponseExtended<System.Web.Mvc.JsonResult> resp = new ResponseExtended<System.Web.Mvc.JsonResult>();
+            try
+            {
+                var usermetadata = _userService.GetUserMetadatakeybyId(userid);
+                if (usermetadata != null)
+                {
+                    var desearlize = serialize.Deserialize(usermetadata.meta_value);
+                    UserData usercollection = javaserializer.Deserialize<UserData>(Convert.ToString(desearlize));
+
+                    if (usercollection != null)
+                    {
+                        usercollection.devicetoken = !string.IsNullOrEmpty(devicetoken) ? devicetoken : string.Empty;                     
+                        var jsonupdate = JsonConvert.SerializeObject(usercollection);
+                        usermetadata.meta_value = serialize.Serialize(jsonupdate);
+                        int user_id = _userService.updateuserdata(usermetadata);
+
+                        if (user_id > 0)
+                        {
+                            resp.ResponseCode = Response.Codes.OK;
+                            resp.ResponseMessage = "User has been updated successfully";
+                        }
+                        else
+                        {
+                            resp.ResponseCode = Response.Codes.InvalidRequest;
+                        }
+
+                    }
+                    else
+                    {
+                        resp.ResponseCode = Response.Codes.InvalidRequest;
+                    }
+                }
+
+                return resp;
+            }
+            catch (Exception ex)
+            {
+                Logs.MailError(ex, "Glamly API Ver 1.0");
+                Logs.Add(string.Format("Exception-{0}::Error={1}", ex.TargetSite.Name, ex.ToString()), "updateUser");
+                resp.ResponseCode = Response.Codes.InternalServerError;
+                return resp;
+            }
+
+        }
+        #endregion
+
+
+        #region "Forget Password"     
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="emailId"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        [Route("SendForgetPasswordEmail/{emailId}"), HttpPost]      
+        public ResponseExtended<System.Web.Mvc.JsonResult> SendForgetPasswordEmail(string emailId)
+        {
+            ResponseExtended<System.Web.Mvc.JsonResult> resp = new ResponseExtended<System.Web.Mvc.JsonResult>();
+            if (emailId == null)
+            {
+                resp.ResponseMessage = "provided parameters are incorrect";
+                resp.ResponseCode = Response.Codes.InvalidRequest;
+            }
+            else
+            {
+                var userdetail = _userService.GetUserByEmailId(emailId);
+
+                if (userdetail != null)
+                {
+                    emailHelper.SendEmailWithTemplateResetPasswordUser(Convert.ToInt32(userdetail.ID), "Glamly");
+                    resp.ResponseCode = Response.Codes.OK;
+                }
+                else
+                {
+                    resp.ResponseCode = Response.Codes.InvalidUser;
+                    resp.ResponseMessage = "Invalid email id";
+                }
+            }
+            return resp;
+        }
+        #endregion
+
+
+        #region "Stylist  Schedule"
+
+
+        #endregion
+
 
         #endregion
     }

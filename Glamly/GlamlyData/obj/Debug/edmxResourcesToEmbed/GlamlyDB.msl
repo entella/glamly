@@ -221,9 +221,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="wp_glamly_servicestypes">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicestypes">
+        <MappingFragment StoreEntitySet="wp_glamly_servicestypes">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="serviceid" ColumnName="serviceid" />
+          <ScalarProperty Name="typename" ColumnName="typename" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="wp_glamly_servicesbookings">
       <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicesbookings">
         <MappingFragment StoreEntitySet="wp_glamly_servicesbookings">
+          <ScalarProperty Name="workflowstatus" ColumnName="workflowstatus" />
+          <ScalarProperty Name="stylistid" ColumnName="stylistid" />
           <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
           <ScalarProperty Name="otherservices" ColumnName="otherservices" />
           <ScalarProperty Name="servicewithtypes" ColumnName="servicewithtypes" />
@@ -253,6 +266,7 @@
     <EntitySetMapping Name="wp_glamly_payment">
       <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_payment">
         <MappingFragment StoreEntitySet="wp_glamly_payment">
+          <ScalarProperty Name="otherservices" ColumnName="otherservices" />
           <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
           <ScalarProperty Name="paymentdate" ColumnName="paymentdate" />
           <ScalarProperty Name="bookingid" ColumnName="bookingid" />
@@ -289,13 +303,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="wp_glamly_servicestypes">
-      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicestypes">
-        <MappingFragment StoreEntitySet="wp_glamly_servicestypes">
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="serviceid" ColumnName="serviceid" />
-          <ScalarProperty Name="typename" ColumnName="typename" />
+    <EntitySetMapping Name="wp_glamly_stylistschedules">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_stylistschedules">
+        <MappingFragment StoreEntitySet="wp_glamly_stylistschedules">
+          <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="stylistId" ColumnName="stylistId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_glamly_userresetpassword">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_userresetpassword">
+        <MappingFragment StoreEntitySet="wp_glamly_userresetpassword">
+          <ScalarProperty Name="requesttime" ColumnName="requesttime" />
+          <ScalarProperty Name="userkey" ColumnName="userkey" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
