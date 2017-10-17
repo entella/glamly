@@ -23,10 +23,10 @@
         <EntityTypeShape EntityType="GlamlyModel.wp_cf7_data" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GlamlyModel.wp_cf7_data_entry" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GlamlyModel.wp_glamly_servicestypes" Width="1.5" PointX="5.375" PointY="12.75" />
-        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_servicesbookings" Width="1.75" PointX="7.375" PointY="12.75" />
         <EntityTypeShape EntityType="GlamlyModel.wp_glamly_payment" Width="1.5" PointX="10.375" PointY="13.75" />
-        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_stylistschedules" Width="1.5" PointX="13.375" PointY="0.75" />
         <EntityTypeShape EntityType="GlamlyModel.wp_glamly_userresetpassword" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_servicesbookings" Width="1.5" PointX="7.375" PointY="12.75" />
+        <EntityTypeShape EntityType="GlamlyModel.wp_glamly_stylistschedules" Width="1.5" PointX="13.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -100,8 +100,73 @@ namespace GlamlyWebAPI.Library
        /// <summary>
        /// 
        /// </summary>
+       /// <param name="username"></param>
        /// <param name="userId"></param>
-       /// <returns></returns>
+       /// <param name="subject"></param>
+        public void SendEmailWithTemplatedAddUser(string username, int userId, string subject)
+        {          
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath("~//Views//Templates//AddUser.html")))
+            {
+                body = reader.ReadToEnd();
+            }          
+
+         //   subject = getTranslatedValuebyKey(subject);
+
+            //Replace the static text
+            body = body.Replace("{ADD_USER_MAIL_SALUTATION}", "Hi");
+            body = body.Replace("{ADD_USER_MAIL_BODY_TEXT1}", "You are successfully register with Glamly");
+            body = body.Replace("{name}", username);
+            body = body.Replace("{ADD_USER_LINK_TEXT}", "Thanks");
+            body = body.Replace("{ADD_USER_MAIL_CLOSING}", "Best regards from Glamly");
+
+            System.Text.StringBuilder returnList = new System.Text.StringBuilder();
+
+            //replacing the body in layout html
+            body = body.Replace("{body}", body);
+            //Subject of email
+            string from = "FromEmail".GetValueFromWebConfig();
+            SendEmail(from, "CustomerServiceEmail".GetValueFromWebConfig(), subject, body);
+        }
+
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="BoooingId"></param>
+      /// <param name="subject"></param>
+        public void SendEmailToAdminCancelBookingByPro( string BoooingId, string subject)
+        {
+            string body = string.Empty;
+            using (StreamReader reader = new StreamReader(HttpContext.Current.Server.MapPath("~//Views//Templates//CancelBooking.html")))
+            {
+                body = reader.ReadToEnd();
+            }
+
+          //  subject = getTranslatedValuebyKey(subject);
+
+            //Replace the static text
+            body = body.Replace("{ADD_USER_MAIL_SALUTATION}", "Hi");
+            body = body.Replace("{ADD_USER_MAIL_BODY_TEXT1}", "The booking is cancel by the user. Below is the booking details");            
+            body = body.Replace("{bookingid}", BoooingId);
+            body = body.Replace("{ADD_USER_LINK_TEXT}", "Thanks");
+            body = body.Replace("{ADD_USER_MAIL_CLOSING}", "Best regards from Glamly");
+
+            System.Text.StringBuilder returnList = new System.Text.StringBuilder();
+
+            //replacing the body in layout html
+            body = body.Replace("{body}", body);
+            //Subject of email
+            string from = "FromEmail".GetValueFromWebConfig();
+            SendEmail(from, "CustomerServiceEmail".GetValueFromWebConfig(), subject, body);
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public string GetUserKeyForPasswordByUserId(int userId)
         {
             UserResetPassword userResetPassword = new UserResetPassword();

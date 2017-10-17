@@ -25,6 +25,22 @@ namespace GlamlyData.Entities
         public string price { get; set; }
     }
 
+    public class AvailsDates
+    {
+        public int stylistid { get; set; }
+        public List<StylistDates> dates { get; set; }
+    }
+
+
+    public class StylistDates
+    {
+        public int id { get; set; }
+        public int stylistid { get; set; }
+        public string date { get; set; }
+        public string status { get; set; }
+        public string isdeleted { get; set; }
+    }
+
     public class Payment
     {
         public string acquirer { get; set; }
@@ -89,6 +105,7 @@ namespace GlamlyData.Entities
         public string isdeleted { get; set; }
         public string workflowstatus { get; set; }
         public int stylistId { get; set; }
+        public string comments { get; set; }
     }
 
     public class PaymentReceipt

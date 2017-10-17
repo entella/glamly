@@ -6,14 +6,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\Glamly API\Publish Glamly\05102017</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\Glamly API\Publish Glamly\16102017</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
       <publishTime>08/23/2017 19:09:59</publishTime>
     </File>
     <File Include="App_Data/GlamlyWebAPI.XML">
-      <publishTime>10/05/2017 18:33:24</publishTime>
+      <publishTime>10/16/2017 12:34:30</publishTime>
     </File>
     <File Include="Areas/HelpPage/HelpPage.css">
       <publishTime>08/23/2017 19:09:48</publishTime>
@@ -91,13 +91,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/06/2017 01:15:32</publishTime>
     </File>
     <File Include="bin/GlamlyData.dll">
-      <publishTime>10/05/2017 16:08:23</publishTime>
+      <publishTime>10/16/2017 12:41:19</publishTime>
     </File>
     <File Include="bin/GlamlyServices.dll">
-      <publishTime>10/05/2017 18:33:33</publishTime>
+      <publishTime>10/16/2017 12:41:23</publishTime>
     </File>
     <File Include="bin/GlamlyWebAPI.dll">
-      <publishTime>10/05/2017 18:33:37</publishTime>
+      <publishTime>10/16/2017 12:41:26</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>12/07/2015 19:04:38</publishTime>
@@ -360,6 +360,18 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>08/23/2017 19:09:42</publishTime>
     </File>
+    <File Include="Views/Templates/AddCompanyUser.html">
+      <publishTime>10/12/2017 21:52:29</publishTime>
+    </File>
+    <File Include="Views/Templates/AddUser.html">
+      <publishTime>10/12/2017 21:52:29</publishTime>
+    </File>
+    <File Include="Views/Templates/ChangePassword.html">
+      <publishTime>10/12/2017 21:52:29</publishTime>
+    </File>
+    <File Include="Views/Templates/ResetPassword.html">
+      <publishTime>10/12/2017 21:52:29</publishTime>
+    </File>
     <File Include="Views/Web.config">
       <publishTime>08/23/2017 19:09:42</publishTime>
     </File>
@@ -367,7 +379,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/23/2017 19:09:42</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/27/2017 13:21:31</publishTime>
+      <publishTime>10/13/2017 12:31:28</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -142,6 +142,7 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
     <Property Name="isdeleted" Type="char" MaxLength="5" Nullable="false" />
     <Property Name="stylistid" Type="int" />
     <Property Name="workflowstatus" Type="int" />
+    <Property Name="comments" Type="varchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="wp_glamly_servicestypes">
     <Key>
@@ -161,6 +162,7 @@ warning 6002: The table/view 'def.wp_glamly.wp_cf7_data_entry' does not have a p
     <Property Name="stylistId" Type="int" Nullable="false" />
     <Property Name="date" Type="datetime" Precision="0" Nullable="false" />
     <Property Name="isdeleted" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="45" />
   </EntityType>
   <EntityType Name="wp_glamly_userresetpassword">
     <Key>

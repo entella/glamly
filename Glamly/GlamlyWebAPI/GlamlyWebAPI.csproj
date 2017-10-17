@@ -350,6 +350,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Views\Templates\AddCompanyUser.html" />
     <Content Include="Views\Templates\AddUser.html" />
+    <Content Include="Views\Templates\CancelBooking.html" />
     <Content Include="Views\Templates\ChangePassword.html" />
     <Content Include="Views\Templates\ResetPassword.html" />
     <Content Include="Web.config">

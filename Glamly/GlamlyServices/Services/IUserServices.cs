@@ -115,5 +115,12 @@ namespace GlamlyServices.Services
 
         bool DeleteUserResetPasswordByUserId(int userId);
 
+        bool DeclineBookingByProUser(string bookingid);
+
+        int SaveStylistAvailsDates(List<StylistDates> dates);
+
+        int DeleteStylistAvailsDates(List<StylistDates> dates);
+
+
     }
 }

@@ -18,5 +18,6 @@ namespace GlamlyData
         public int stylistId { get; set; }
         public System.DateTime date { get; set; }
         public string isdeleted { get; set; }
+        public string status { get; set; }
     }
 }

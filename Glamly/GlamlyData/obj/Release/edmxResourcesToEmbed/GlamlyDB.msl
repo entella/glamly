@@ -232,37 +232,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="wp_glamly_servicesbookings">
-      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicesbookings">
-        <MappingFragment StoreEntitySet="wp_glamly_servicesbookings">
-          <ScalarProperty Name="workflowstatus" ColumnName="workflowstatus" />
-          <ScalarProperty Name="stylistid" ColumnName="stylistid" />
-          <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
-          <ScalarProperty Name="otherservices" ColumnName="otherservices" />
-          <ScalarProperty Name="servicewithtypes" ColumnName="servicewithtypes" />
-          <ScalarProperty Name="isedit" ColumnName="isedit" />
-          <ScalarProperty Name="userid" ColumnName="userid" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="newsletter" ColumnName="newsletter" />
-          <ScalarProperty Name="message" ColumnName="message" />
-          <ScalarProperty Name="billingaddress" ColumnName="billingaddress" />
-          <ScalarProperty Name="phone" ColumnName="phone" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="personal" ColumnName="personal" />
-          <ScalarProperty Name="surname" ColumnName="surname" />
-          <ScalarProperty Name="firstname" ColumnName="firstname" />
-          <ScalarProperty Name="zipcode" ColumnName="zipcode" />
-          <ScalarProperty Name="city" ColumnName="city" />
-          <ScalarProperty Name="address" ColumnName="address" />
-          <ScalarProperty Name="altdatetime" ColumnName="altdatetime" />
-          <ScalarProperty Name="datetime" ColumnName="datetime" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="service" ColumnName="service" />
-          <ScalarProperty Name="bookingid" ColumnName="bookingid" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="wp_glamly_payment">
       <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_payment">
         <MappingFragment StoreEntitySet="wp_glamly_payment">
@@ -299,6 +268,58 @@
           <ScalarProperty Name="approvalcode" ColumnName="approvalcode" />
           <ScalarProperty Name="amount" ColumnName="amount" />
           <ScalarProperty Name="acquirer" ColumnName="acquirer" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_glamly_stylistschedules">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_stylistschedules">
+        <MappingFragment StoreEntitySet="wp_glamly_stylistschedules">
+          <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="stylistId" ColumnName="stylistId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_glamly_userresetpassword">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_userresetpassword">
+        <MappingFragment StoreEntitySet="wp_glamly_userresetpassword">
+          <ScalarProperty Name="requesttime" ColumnName="requesttime" />
+          <ScalarProperty Name="userkey" ColumnName="userkey" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wp_glamly_servicesbookings">
+      <EntityTypeMapping TypeName="GlamlyModel.wp_glamly_servicesbookings">
+        <MappingFragment StoreEntitySet="wp_glamly_servicesbookings">
+          <ScalarProperty Name="comments" ColumnName="comments" />
+          <ScalarProperty Name="workflowstatus" ColumnName="workflowstatus" />
+          <ScalarProperty Name="stylistid" ColumnName="stylistid" />
+          <ScalarProperty Name="isdeleted" ColumnName="isdeleted" />
+          <ScalarProperty Name="otherservices" ColumnName="otherservices" />
+          <ScalarProperty Name="servicewithtypes" ColumnName="servicewithtypes" />
+          <ScalarProperty Name="isedit" ColumnName="isedit" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="newsletter" ColumnName="newsletter" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="billingaddress" ColumnName="billingaddress" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="personal" ColumnName="personal" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="altdatetime" ColumnName="altdatetime" />
+          <ScalarProperty Name="datetime" ColumnName="datetime" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="service" ColumnName="service" />
+          <ScalarProperty Name="bookingid" ColumnName="bookingid" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

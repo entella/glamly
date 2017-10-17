@@ -39,5 +39,6 @@ namespace GlamlyData
         public string isdeleted { get; set; }
         public Nullable<int> stylistid { get; set; }
         public Nullable<int> workflowstatus { get; set; }
+        public string comments { get; set; }
     }
 }

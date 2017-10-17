@@ -636,21 +636,21 @@
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.DeletePaymentRecipt(System.String)">
             <summary>
-            
+            Delete the payment recipt.
             </summary>
             <param name="bookingid"></param>
             <returns></returns>
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.UpdateService(GlamlyData.Entities.Services)">
             <summary>
-            
+            Update the service.
             </summary>
             <param name="service"></param>
             <returns></returns>
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.AddServiceType(System.String,System.Int32,System.String)">
             <summary>
-            
+            Add the service type.
             </summary>
             <param name="ServiceType"></param>
             <param name="Price"></param>
@@ -659,7 +659,7 @@
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.DeleteService(System.Int32)">
             <summary>
-            
+            Delete the service by id
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -706,7 +706,7 @@
         </member>
         <member name="M:GlamlyWebAPI.Controllers.UsersController.GetUnderlagdataByPro(System.Int32)">
             <summary>
-            
+            Get the underlagdata by pro 
             </summary>
             <param name="stylistid"></param>
             <returns></returns>
@@ -716,6 +716,63 @@
             Delete single payment receipt by id
             </summary>
             <param name="paymentId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.DeclineBookingByProUser(System.String)">
+            <summary>
+            Decline the booking by pro user.
+            </summary>
+            <param name="BookingId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.UpdateDeviceTokenByUserId(System.Int32,System.String)">
+            <summary>
+            Update device token of user.
+            </summary>
+            <param name="userid"></param>
+            <param name="devicetoken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.SendForgetPasswordEmail(System.String)">
+            <summary>
+            Send forget password email.
+            </summary>
+            <param name="emailId"></param>
+            <returns></returns>     
+        </member>
+        <member name="M:GlamlyWebAPI.Controllers.UsersController.AddUpdateAvailsStylistDates(GlamlyData.Entities.AvailsDates)">
+            <summary>
+            Add update avaiable stylist dates.
+            </summary>
+            <param name="dates"></param>
+            <returns></returns>
+            
+        </member>
+        <member name="T:GlamlyWebAPI.Library.EmailHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:GlamlyWebAPI.Library.EmailHelper.SendEmailWithTemplatedAddStylistUser(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="useremail"></param>
+            <param name="password"></param>
+            <param name="username"></param>
+        </member>
+        <member name="M:GlamlyWebAPI.Library.EmailHelper.SendEmailWithTemplateResetPasswordUser(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="userId"></param>
+            <param name="subject"></param>
+        </member>
+        <member name="M:GlamlyWebAPI.Library.EmailHelper.GetUserKeyForPasswordByUserId(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="userId"></param>
             <returns></returns>
         </member>
         <member name="T:GlamlyWebAPI.Library.Hashing">
@@ -921,6 +978,18 @@
             <summary>
             Response data payload
             </summary>
+        </member>
+        <member name="T:GlamlyWebAPI.Library.StringExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:GlamlyWebAPI.Library.StringExtensions.GetValueFromWebConfig(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
         </member>
         <member name="T:GlamlyWebAPI.Library.Token">
             <summary>

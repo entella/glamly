@@ -629,6 +629,79 @@ namespace GlamlyServices.Services
                 throw new Exception();
             }
         }
+
+        public bool DeclineBookingByProUser(string bookingid)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    var userToDelete = context.wp_glamly_servicesbookings.FirstOrDefault(x => x.bookingid == bookingid);
+                    userToDelete.workflowstatus = (int)BookingStatus.RejectedByProUser;
+                    context.Entry(userToDelete).State = System.Data.Entity.EntityState.Modified;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public int SaveStylistAvailsDates( List<StylistDates> dates)
+        {
+            try
+            {
+                List<wp_glamly_stylistschedules> dateobj = new List<wp_glamly_stylistschedules>();
+                using (var context = new GlamlyEntities())
+                {
+                    wp_glamly_stylistschedules objadd = new wp_glamly_stylistschedules();
+
+                    foreach (var item in dates)
+                    {
+
+                        objadd.date =Convert.ToDateTime(item.date);
+                        objadd.isdeleted = item.isdeleted;
+                        objadd.stylistId = item.stylistid;
+                        objadd.status = item.status;
+                        context.Entry(objadd).State = System.Data.Entity.EntityState.Added;                       
+                        context.SaveChanges();
+                    }
+                  
+
+                    return 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
+
+        public int DeleteStylistAvailsDates(List<StylistDates> dates)
+        {
+            try
+            {
+                using (var context = new GlamlyEntities())
+                {
+                    wp_glamly_stylistschedules objdelete = new wp_glamly_stylistschedules();
+                    foreach (var item in dates)
+                    {
+
+                        var deleteObjectDB = context.wp_glamly_stylistschedules.FirstOrDefault(x => x.id == item.id);
+                        if (deleteObjectDB != null)
+                            context.Entry(deleteObjectDB).State = System.Data.Entity.EntityState.Deleted;                                             
+                    }                    
+                    context.SaveChanges();
+                    return 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
+        }
     }
 
     #endregion
